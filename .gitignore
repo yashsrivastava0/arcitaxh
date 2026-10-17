@@ -1,0 +1,27 @@
+# dependencies and build output
+node_modules/
+dist/
+build/
+coverage/
+.turbo/
+*.tsbuildinfo
+playwright-report/
+test-results/
+
+# environment and secrets (names only live in .env.example)
+.env
+.env.*
+!.env.example
+
+# local agent configuration
+CLAUDE.local.md
+.claude/settings.local.json
+
+# editor and OS
+.DS_Store
+Thumbs.db
+.idea/
+*.log
+
+# generated scratch output
+.scratch/

@@ -1,0 +1,21 @@
+{
+  "name": "decision-canvas",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "description": "Decision-Native Architecture Canvas (working name). Phase 0: validate the engine.",
+  "packageManager": "pnpm@12.14.0",
+  "engines": {
+    "node": ">=24.22.0"
+  },
+  "scripts": {
+    "docs:index": "tsx tools/docs-index/src/cli.ts --write",
+    "docs:check": "tsx tools/docs-index/src/cli.ts --check"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
