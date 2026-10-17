@@ -1,0 +1,11 @@
+{
+  "name": "@product/tool-policy",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "description": "Tests that enforce repository policy against the real configs (lint purity rules).",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  }
+}

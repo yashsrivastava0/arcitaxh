@@ -4,7 +4,7 @@
 
 Registry of every document under `docs/` with frontmatter. Read this first, then open only the files you need. Sorted by `updated` (newest first) within each category.
 
-48 entries (45 documents, 3 source files).
+49 entries (46 documents, 3 source files).
 
 ## source
 
@@ -64,6 +64,7 @@ Canonical source documents. No frontmatter; read-only.
 | ADR-036: Test runner Vitest | decision | draft | 2026-10-18 | [04-decisions/0036-test-runner-vitest.md](./04-decisions/0036-test-runner-vitest.md) |
 | ADR-037: Dependency boundary enforcement | decision | draft | 2026-10-18 | [04-decisions/0037-dependency-boundary-enforcement.md](./04-decisions/0037-dependency-boundary-enforcement.md) |
 | ADR-038: Licence gate, notices and secret scan | decision | draft | 2026-10-18 | [04-decisions/0038-licence-gate-and-notices.md](./04-decisions/0038-licence-gate-and-notices.md) |
+| ADR-039: Core schemas, normalisation and the spec extensions they needed | decision | draft | 2026-10-18 | [04-decisions/0039-core-schemas-and-spec-extensions.md](./04-decisions/0039-core-schemas-and-spec-extensions.md) |
 
 ## phases
 

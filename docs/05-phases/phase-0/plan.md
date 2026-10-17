@@ -61,6 +61,7 @@ Note on order: M5 and M6 need only the core types and the `KBReader` port, so th
 | A8 | `phase0.json` price, period, spend cap and `model-roster.json` ids are left `null` / `__FOUNDER_TO_SET__`; tools refuse to run on them. | Brief 9, Q7 | Founder fills them |
 | A9 | Founder location is India for the deferred checkout; no provider is integrated. | Brief 16, Q3 | Q3 answered |
 | A10 | The specification gives freshness TTLs for price, limit, rate-limit, capability, latency profile and guidance, but none for `option`, `tradeoff`, `flip` and `antipattern` records. Open: M3 will not guess. The release check treats a record type with no TTL entry as a configuration error until the founder picks values. | Spec 8.4 | Founder answers (question 9 in questions.md) |
+| A11 | Config values the specification does NOT give, set as Defaults in `config/` and marked Assumption in each file's `_status`: operational_simplicity table (ops_burden low/medium/high 1.0/0.6/0.2 times a deployment factor 1.0/0.9/0.7), latency_fit values (comfortable ratio 0.5; 1.0/0.6/0.0), same-region hop 5 ms, edge bound 600, note length 500, retry back-off 500 ms times 2, `ops_burden` allowed values, the free-tier horizon of 12 months as a config value. None is a fact; all are tunable without a deploy. | Needed to implement the six dimension functions (6.5) | Tuned in Phase 0, or the founder sets them |
 
 ## Risks
 

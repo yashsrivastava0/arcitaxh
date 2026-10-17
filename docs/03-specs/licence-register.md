@@ -107,6 +107,9 @@ Each row is verified from the installed package's own metadata and licence file 
 | dependency-cruiser | MIT | Yes | Dev tool only; not shipped | Plan | 2026-10-18 | installed package.json `license` field (18.6.0), via `pnpm licenses list -r --json` | root |
 | vite | MIT | Yes | Dev tool only for now (transitive of vitest); apps/web will depend on it directly in M9. Keep the notice if it is ever bundled | Plan | 2026-10-18 | installed package.json `license` field (8.3.4), via `pnpm licenses list -r --json` | root (transitive of vitest) |
 | node | MIT OR BSD OR bsd OR GPLv3 OR ISC OR zlib | Yes | Node.js runtime, dev only (downloaded by pnpm `devEngines` so scripts run on the pinned LTS); not shipped. Node.js itself is MIT; this string aggregates the licences of its bundled third-party components, and we rely on MIT | Plan | 2026-10-18 | installed package.json `license` field and LICENSE file (24.22.0), via `pnpm licenses list -r --json` | root |
+| zod | MIT | Yes | Runtime dependency of packages/core (source of truth for schemas). Keep the notice | Plan | 2026-10-18 | installed package.json `license` field and LICENSE file (4.6.7), via `pnpm licenses list -r --json` | packages/core |
+| @noble/hashes | MIT | Yes | Runtime dependency of packages/core (synchronous pure-JS SHA-256). Keep the notice | Plan | 2026-10-18 | installed package.json `license` field and LICENSE file (2.4.0), via `pnpm licenses list -r --json` | packages/core |
+| fast-check | MIT | Yes | Dev dependency (property tests); not shipped | Plan | 2026-10-18 | installed package.json `license` field and LICENSE file (4.10.2), via `pnpm licenses list -r --json` | packages/core (tests) |
 
 ## 3. Resolution of "Check" items
 

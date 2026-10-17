@@ -34,6 +34,7 @@ confidence_tags: [Open, Assumption]
 | 7 | Waitlist price and period, gate thresholds, spend cap | `null`; tools refuse to run |
 | 8 | Product name | Working name; scope `@product/*` |
 | 9 | Freshness TTL (days) for `option`, `tradeoff`, `flip` and `antipattern` records; the spec specifies only price, limit, rate-limit, capability, latency profile and guidance (plan A10). | None. The KB release check fails with a clear message for a type without a TTL, and fixtures are unaffected. |
+| 10 | Are the Assumption-tagged config values in plan A11 (operational-simplicity and latency-fit tables, same-region hop, bounds) acceptable as starting points? | Used as is; tune in Phase 0. |
 
 ## Needed from the founder before the blind test
 
