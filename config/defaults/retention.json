@@ -1,0 +1,8 @@
+{
+  "_status": "Default. Counsel to confirm financial and legal periods.",
+  "_source": "specification 10.6 (retention), 17.4 (deletion six months after analysis)",
+  "rendered_debate_inputs_days": 90,
+  "debate_events_days": 30,
+  "verdict_cache_days": 90,
+  "rater_data_months_after_analysis": 6
+}

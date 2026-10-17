@@ -1,0 +1,14 @@
+{
+  "_status": "Default. retry_backoff_ms is not given by the specification ('with backoff'): Assumption.",
+  "_source": "specification 11.3 (rounds, output caps), 11.6 (turns per round), 10.4 (timeouts, retries)",
+  "max_rounds": 3,
+  "default_rounds": 2,
+  "turn_output_cap_tokens": 600,
+  "judge_output_cap_tokens": 1200,
+  "max_turns_per_round": 6,
+  "timeouts_s": { "explain": 15, "turn": 90, "judge": 120 },
+  "retries": { "explain": 1, "turn": 2, "judge": 2 },
+  "retry_backoff_ms": { "base": 500, "factor": 2 },
+  "early_stop": true,
+  "roles": ["advocate", "skeptic", "cost_ops", "security", "judge"]
+}

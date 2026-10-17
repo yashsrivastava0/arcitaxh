@@ -1,0 +1,13 @@
+{
+  "_status": "Default. option, tradeoff, flip and antipattern TTLs are deliberately absent: the specification gives none (plan A10, open question 9).",
+  "_source": "specification 8.4",
+  "ttl_days": {
+    "price": 30,
+    "limit": 30,
+    "rate_limit": 30,
+    "capability": 90,
+    "latency_profile": 14,
+    "guidance": 180
+  },
+  "due_soon_days": 7
+}

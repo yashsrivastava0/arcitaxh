@@ -1,0 +1,51 @@
+{
+  "_status": "Founder inputs. Every field is a placeholder until the founder pins it. The real-LLM runner refuses placeholders. Model ids are never hard-coded in code or prompts.",
+  "_source": "specification 6.11, 11.2 (roster policy), ADR-014 and ADR-027 (gateway and pins are Open)",
+  "roles": {
+    "arm_a": {
+      "provider": "__FOUNDER_TO_SET__",
+      "modelId": "__FOUNDER_TO_SET__",
+      "gateway": "__FOUNDER_TO_SET__"
+    },
+    "explain": {
+      "provider": "__FOUNDER_TO_SET__",
+      "modelId": "__FOUNDER_TO_SET__",
+      "gateway": "__FOUNDER_TO_SET__"
+    },
+    "advocate_1": {
+      "provider": "__FOUNDER_TO_SET__",
+      "modelId": "__FOUNDER_TO_SET__",
+      "gateway": "__FOUNDER_TO_SET__"
+    },
+    "advocate_2": {
+      "provider": "__FOUNDER_TO_SET__",
+      "modelId": "__FOUNDER_TO_SET__",
+      "gateway": "__FOUNDER_TO_SET__"
+    },
+    "advocate_3": {
+      "provider": "__FOUNDER_TO_SET__",
+      "modelId": "__FOUNDER_TO_SET__",
+      "gateway": "__FOUNDER_TO_SET__"
+    },
+    "skeptic": {
+      "provider": "__FOUNDER_TO_SET__",
+      "modelId": "__FOUNDER_TO_SET__",
+      "gateway": "__FOUNDER_TO_SET__"
+    },
+    "cost_ops": {
+      "provider": "__FOUNDER_TO_SET__",
+      "modelId": "__FOUNDER_TO_SET__",
+      "gateway": "__FOUNDER_TO_SET__"
+    },
+    "security": {
+      "provider": "__FOUNDER_TO_SET__",
+      "modelId": "__FOUNDER_TO_SET__",
+      "gateway": "__FOUNDER_TO_SET__"
+    },
+    "judge": {
+      "provider": "__FOUNDER_TO_SET__",
+      "modelId": "__FOUNDER_TO_SET__",
+      "gateway": "__FOUNDER_TO_SET__"
+    }
+  }
+}

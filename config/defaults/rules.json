@@ -1,0 +1,13 @@
+{
+  "_status": "Default. max_edges, max_note_chars, hop_default_same_region_ms and free_tier_horizon_months are not numbers given by the specification where marked: Assumption.",
+  "_source": "specification 5.4 (I7: 200 components; label 80 characters), 7.2 (R-05 0.8), 7.3 (month = 30 days), 7.4 (same-region hop default), 7.7 (presets 1x, 10x, 100x), R-07 (12 months)",
+  "read_ratio_threshold": 0.8,
+  "month_days": 30,
+  "max_components": 200,
+  "max_edges": 600,
+  "max_label_chars": 80,
+  "max_note_chars": 500,
+  "hop_default_same_region_ms": 5,
+  "free_tier_horizon_months": 12,
+  "scale_presets": [1, 10, 100]
+}

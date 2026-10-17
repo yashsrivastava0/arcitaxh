@@ -1,0 +1,6 @@
+{
+  "_status": "Decision (at most three finalists); Recommendation (the rule for adding the third)",
+  "_source": "specification 6.6; blueprint section 8",
+  "max_finalists": 3,
+  "third_within_theta_clear": true
+}

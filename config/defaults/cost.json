@@ -1,0 +1,6 @@
+{
+  "_status": "Default",
+  "_source": "specification 11.10 (Layer 2 paragraphs), 17.2 (length matched within about 10%)",
+  "layer2_max_paragraphs": 3,
+  "length_match_tolerance_pct": 10
+}

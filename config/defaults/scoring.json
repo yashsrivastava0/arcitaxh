@@ -1,0 +1,33 @@
+{
+  "_status": "Default. Values for operational_simplicity and latency_fit are NOT given by the specification: Assumption, to be tuned in Phase 0.",
+  "_source": "specification 6.5 (dimensions, weights, multipliers), 6.6 (theta_clear, theta_uncertain)",
+  "theta_clear": 0.15,
+  "theta_uncertain": 0.05,
+  "base_weights": {
+    "cost_fit": 1,
+    "scale_fit": 1,
+    "latency_fit": 1,
+    "operational_simplicity": 1,
+    "ecosystem_fit": 1,
+    "reversibility": 1
+  },
+  "multipliers": [
+    { "when": "solo_or_beginner", "dimension": "operational_simplicity", "factor": 2 },
+    { "when": "free_tiers_only", "dimension": "cost_fit", "factor": 2 },
+    { "when": "latency_must_have", "dimension": "latency_fit", "factor": 2 },
+    { "when": "existing_stack_platform", "dimension": "ecosystem_fit", "factor": 1.5 },
+    { "when": "users_12m_at_least_growth_ratio", "dimension": "scale_fit", "factor": 1.5 }
+  ],
+  "growth_ratio_threshold": 10,
+  "dimension_values": {
+    "cost_fit": { "free_tier_covers": 1.0, "paid_tier_fits_ceiling": 0.6, "otherwise": 0.2, "price_expired": 0.5 },
+    "scale_fit": { "covers_10x": 1.0, "covers_1x_only": 0.5, "below_1x": 0.0 },
+    "latency_fit": { "comfortable_ratio": 0.5, "comfortable": 1.0, "fits": 0.6, "exceeds": 0.0 },
+    "operational_simplicity": {
+      "ops_burden": { "low": 1.0, "medium": 0.6, "high": 0.2 },
+      "deployment_factor": { "managed": 1.0, "both": 0.9, "self_hosted": 0.7 }
+    },
+    "ecosystem_fit": { "in_stack": 1.0, "same_platform": 0.7, "otherwise": 0.4 },
+    "reversibility": { "low": 1.0, "medium": 0.6, "high": 0.2, "unknown": 0.5 }
+  }
+}

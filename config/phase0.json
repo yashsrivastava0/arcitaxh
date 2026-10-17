@@ -1,0 +1,21 @@
+{
+  "_status": "Founder inputs. A null here is not a default: release, publish and real-run tooling refuses to proceed. Never invent a price.",
+  "_source": "specification 16.2 (waitlist threshold), 17.1 (hypotheses, alpha), 17.2 (6 to 10 scenarios per rater), 17.3 (30 citations), 17.5 (spend cap)",
+  "waitlist": {
+    "displayed_price_usd": null,
+    "displayed_period": null
+  },
+  "gate": {
+    "waitlist_min_join_rate": 0.1,
+    "h1_min_preference": 0.6,
+    "alpha": 0.025,
+    "min_paired_judgments": 100
+  },
+  "spend": {
+    "phase0_model_cap_usd": null
+  },
+  "test": {
+    "scenarios_per_rater": { "min": 6, "max": 10 },
+    "citation_sample_size": 30
+  }
+}
