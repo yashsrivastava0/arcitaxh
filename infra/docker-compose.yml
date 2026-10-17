@@ -1,0 +1,32 @@
+# Local PostgreSQL for development and integration tests (direct connection; no pooler).
+# Start only when you need it: this machine is low on RAM.
+#   docker compose --env-file ../.env -f docker-compose.yml up -d
+#   docker compose --env-file ../.env -f docker-compose.yml down        # keeps the data volume
+# Variables are names only in .env.example; there are deliberately no default credentials here.
+services:
+  postgres:
+    image: postgres:18-alpine
+    container_name: decision-canvas-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:?set POSTGRES_USER in .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: ${POSTGRES_DB:?set POSTGRES_DB in .env}
+    ports:
+      # 5433 on the host so it does not clash with another PostgreSQL on 5432.
+      - '127.0.0.1:${POSTGRES_PORT:-5433}:5432'
+    volumes:
+      # PostgreSQL 18+ images keep data in a version-specific subdirectory and declare the volume at
+      # /var/lib/postgresql (not /var/lib/postgresql/data as for 17 and below).
+      - decision-canvas-pgdata:/var/lib/postgresql
+    command: ['postgres', '-c', 'shared_buffers=64MB', '-c', 'max_connections=30', '-c', 'fsync=on']
+    mem_limit: 512m
+    shm_size: 128mb
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}']
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  decision-canvas-pgdata:

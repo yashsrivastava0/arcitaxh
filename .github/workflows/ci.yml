@@ -1,0 +1,57 @@
+# Every step blocks merge. Stages follow the Phase 0 brief 8.3. Steps for later milestones are listed as comments
+# and are added in the milestone that creates them (never as a step that is expected to fail).
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      # Actions are pinned to full commit SHAs (supply-chain hygiene). Tag shown for humans.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      # 1. Frozen-lockfile install
+      - run: pnpm install --frozen-lockfile
+
+      # 2. Typecheck, lint, dependency boundaries
+      - run: pnpm typecheck
+      - run: pnpm lint
+      - run: pnpm check:boundaries
+
+      # 3. Core unit tests (rule fixtures, calculators, validator, hashing, articulation points)
+      - run: pnpm test:core
+
+      # 4. Calculator property + golden tests; all other unit tests (docs tool, licence gate, KB tools, LLM layer, API, web smoke)
+      - run: pnpm test
+
+      # 5. Parity (Node vs browser build): added in M11 (Playwright, Chromium only for this stage)
+      # 6. KB checks (pnpm kb:check): added in M3
+      # 7. Integration tests against real PostgreSQL (service container): added in M8
+
+      # 8. Security and licence: dependency audit, secret scan, licence gate, notices current
+      - run: pnpm audit:prod
+      - run: pnpm secrets:scan
+      - run: pnpm licences:check
+      - run: pnpm notices:check
+
+      # 9. Docs check (frontmatter, links, INDEX.md up to date)
+      - run: pnpm docs:check
+
+      # 10. Build: added in M9 (apps/web) and M8 (apps/api)
