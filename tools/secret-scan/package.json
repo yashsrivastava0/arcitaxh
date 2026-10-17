@@ -1,0 +1,14 @@
+{
+  "name": "@product/tool-secret-scan",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "description": "Scans tracked files for secret-looking strings (CI security stage). No third-party dependencies.",
+  "exports": {
+    ".": "./src/lib.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  }
+}

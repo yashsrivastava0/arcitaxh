@@ -194,8 +194,11 @@ export function checkDocs(input: DocsInput): DocsResult {
   const sources: SourceEntry[] = [];
 
   // The schema's category enum and categories.json must agree (plus `source`, which has no frontmatter).
-  const enumFromSchema: string[] =
-    ((schema as { properties?: { category?: { enum?: string[] } } }).properties?.category?.enum ?? []).slice().sort();
+  const enumFromSchema: string[] = (
+    (schema as { properties?: { category?: { enum?: string[] } } }).properties?.category?.enum ?? []
+  )
+    .slice()
+    .sort();
   const enumFromCategories = categories.categories
     .filter((c) => !c.registryOnly)
     .map((c) => c.id)
@@ -215,7 +218,10 @@ export function checkDocs(input: DocsInput): DocsResult {
     if (c.kind === 'ignored') continue;
     if (c.kind === 'orphan') {
       if (rel.endsWith('.md')) {
-        problems.push({ file: rel, message: 'markdown file is outside every category folder (see docs/_meta/categories.json)' });
+        problems.push({
+          file: rel,
+          message: 'markdown file is outside every category folder (see docs/_meta/categories.json)',
+        });
       }
       continue;
     }
@@ -248,7 +254,10 @@ export function checkDocs(input: DocsInput): DocsResult {
     if (!validate(data)) {
       for (const err of validate.errors ?? []) {
         const where = err.instancePath === '' ? '(root)' : err.instancePath.replace(/^\//, '');
-        const extra = err.keyword === 'additionalProperties' ? ` (${(err.params as { additionalProperty: string }).additionalProperty})` : '';
+        const extra =
+          err.keyword === 'additionalProperties'
+            ? ` (${(err.params as { additionalProperty: string }).additionalProperty})`
+            : '';
         problems.push({ file: rel, message: `frontmatter ${where}: ${err.message}${extra}` });
       }
       continue;
@@ -265,10 +274,14 @@ export function checkDocs(input: DocsInput): DocsResult {
       related: string[];
     };
     if (fmData.category !== c.category) {
-      problems.push({ file: rel, message: `category "${fmData.category}" does not match the folder's category "${c.category}"` });
+      problems.push({
+        file: rel,
+        message: `category "${fmData.category}" does not match the folder's category "${c.category}"`,
+      });
     }
     for (const key of ['created', 'updated'] as const) {
-      if (!isRealDate(fmData[key])) problems.push({ file: rel, message: `${key} "${fmData[key]}" is not a real calendar date` });
+      if (!isRealDate(fmData[key]))
+        problems.push({ file: rel, message: `${key} "${fmData[key]}" is not a real calendar date` });
     }
     if (fmData.verified_on !== null && !isRealDate(fmData.verified_on)) {
       problems.push({ file: rel, message: `verified_on "${fmData.verified_on}" is not a real calendar date` });
@@ -279,11 +292,19 @@ export function checkDocs(input: DocsInput): DocsResult {
     for (const field of ['supersedes', 'related'] as const) {
       for (const t of fmData[field]) {
         const resolved = resolveTarget(rel, t) ?? path.normalize(path.join(path.dirname(rel), t));
-        if (!targetExists(resolved, allPaths)) problems.push({ file: rel, message: `${field} target does not exist: ${t}` });
+        if (!targetExists(resolved, allPaths))
+          problems.push({ file: rel, message: `${field} target does not exist: ${t}` });
       }
     }
     checkLinks(rel, fm.body, allPaths, problems);
-    docs.push({ path: rel, title: fmData.title, category: fmData.category, type: fmData.type, status: fmData.status, updated: fmData.updated });
+    docs.push({
+      path: rel,
+      title: fmData.title,
+      category: fmData.category,
+      type: fmData.type,
+      status: fmData.status,
+      updated: fmData.updated,
+    });
   }
 
   return { problems, docs, sources, index: buildIndex(docs, sources, categories) };

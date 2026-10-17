@@ -41,7 +41,7 @@ Run from the repo root with pnpm (version in `package.json#packageManager`, Node
 | `pnpm db:migrate` | Apply migrations (needs Postgres) | M8 |
 | `pnpm dev` | API + web in development (fake LLM client) | M9 |
 | `pnpm phase0:*` | Blind-test harness commands | M10 |
-| `pnpm ci` | Everything CI runs, in CI order | M1, grows each milestone |
+| `pnpm run ci` | Everything CI runs, in CI order. **Use `pnpm run ci`**: bare `pnpm ci` is pnpm 12's built-in clean install and deletes `node_modules` | M1, grows each milestone |
 
 ## 4. Hard rules (non-negotiable)
 
@@ -89,7 +89,7 @@ A feature is done when: its tests pass; its analytics events and log fields are 
 
 ## 9. Handoff protocol
 
-Before you stop, update `docs/05-phases/phase-0/status.md`: what is done, what is next, blockers, questions. Leave the repo green (`pnpm ci` as far as it exists). Record every decision you make as an ADR (`/new-adr`); numbering continues from ADR-032. Append conflicts to `conflicts.md` and out-of-scope ideas to `parking-lot.md`.
+Before you stop, update `docs/05-phases/phase-0/status.md`: what is done, what is next, blockers, questions. Leave the repo green (`pnpm run ci` as far as it exists). Record every decision you make as an ADR (`/new-adr`); numbering continues from ADR-032. Append conflicts to `conflicts.md` and out-of-scope ideas to `parking-lot.md`.
 
 ## 10. Stop and ask
 

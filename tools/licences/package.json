@@ -1,0 +1,14 @@
+{
+  "name": "@product/tool-licences",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "description": "Licence gate: installed dependency licences vs the allow-list and docs/03-specs/licence-register.md.",
+  "exports": {
+    ".": "./src/lib.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  }
+}

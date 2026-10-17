@@ -15,7 +15,7 @@
       "Bash(pnpm kb:build)",
       "Bash(pnpm kb:sweep)",
       "Bash(pnpm kb:schema)",
-      "Bash(pnpm ci)",
+      "Bash(pnpm run ci)",
       "Bash(git status)",
       "Bash(git status *)",
       "Bash(git diff)",
@@ -28,6 +28,8 @@
     "ask": [
       "Bash(git push)",
       "Bash(git push *)",
+      "Bash(pnpm ci)",
+      "Bash(pnpm ci *)",
       "Bash(pnpm add *)",
       "Bash(pnpm install *)",
       "Bash(pnpm remove *)",

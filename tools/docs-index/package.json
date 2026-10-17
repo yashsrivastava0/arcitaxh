@@ -10,7 +10,8 @@
   },
   "scripts": {
     "docs:check": "tsx src/cli.ts --check",
-    "docs:index": "tsx src/cli.ts --write"
+    "docs:index": "tsx src/cli.ts --write",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "ajv": "^8.20.0",

@@ -19,7 +19,9 @@ if (result.problems.length > 0) {
 
 if (mode === 'write') {
   writeFileSync(`${docsDir}/INDEX.md`, result.index, 'utf8');
-  console.log(`docs:index wrote docs/INDEX.md (${result.docs.length} documents, ${result.sources.length} source files)`);
+  console.log(
+    `docs:index wrote docs/INDEX.md (${result.docs.length} documents, ${result.sources.length} source files)`,
+  );
 } else if (!indexIsCurrent(docsDir, result.index)) {
   console.error('docs: INDEX.md is out of date. Run `pnpm docs:index` and commit the result.');
   process.exit(1);

@@ -1,0 +1,14 @@
+{
+  "name": "@product/tool-notices",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "description": "Generates THIRD_PARTY_NOTICES.md from the licences of production dependencies that are shipped.",
+  "exports": {
+    ".": "./src/lib.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  }
+}
