@@ -1,0 +1,22 @@
+{
+  "_comment": "Maps a docs folder to the `category` value its files must carry. tools/docs-index also checks that these ids equal the enum in frontmatter.schema.json (plus `source`, which is registry-only and has no frontmatter).",
+  "categories": [
+    { "id": "source", "folder": "01-source", "registryOnly": true },
+    { "id": "market-and-competitors", "folder": "02-research/market-and-competitors" },
+    { "id": "pricing-and-payments", "folder": "02-research/pricing-and-payments" },
+    { "id": "legal-licensing-compliance", "folder": "02-research/legal-licensing-compliance" },
+    { "id": "kb-sources", "folder": "02-research/kb-sources" },
+    { "id": "debate-and-evals", "folder": "02-research/debate-and-evals" },
+    { "id": "llm-providers-and-gateways", "folder": "02-research/llm-providers-and-gateways" },
+    { "id": "infrastructure-and-hosting", "folder": "02-research/infrastructure-and-hosting" },
+    { "id": "frontend-and-canvas", "folder": "02-research/frontend-and-canvas" },
+    { "id": "acquisition-and-growth", "folder": "02-research/acquisition-and-growth" },
+    { "id": "specs", "folder": "03-specs" },
+    { "id": "decisions", "folder": "04-decisions" },
+    { "id": "phases", "folder": "05-phases" },
+    { "id": "runbooks", "folder": "06-runbooks" },
+    { "id": "validation", "folder": "07-validation" }
+  ],
+  "ignoredFolders": ["00-inbox", "02-research/_archive", "_templates", "_meta"],
+  "exemptFileNames": ["README.md", "INDEX.md", "CLAUDE.md"]
+}

@@ -1,0 +1,35 @@
+---
+title: "Phase 0 conflicts between documents"
+category: phases
+type: note
+status: draft
+tags: [phase-0, conflicts]
+created: 2026-10-18
+updated: 2026-10-18
+verified_on: null
+author: agent
+sources: []
+supersedes: []
+related: ["plan.md", "../../01-source/architecture-specification-v0.1.pdf"]
+confidence_tags: [Recommendation]
+---
+
+# Conflicts and clarifications
+
+Precedence: a blueprint Decision, then the specification, then the research report, with the build brief as the instruction for this phase. Nothing here is resolved silently. "Founder input needed" is yes only when scope, cost or licences are affected.
+
+| ID | Where | What differs | Proposed resolution | Founder input needed |
+|---|---|---|---|---|
+| C-001 | Brief 2.3 rule 8, 4.1 tree, 8.3 stage 6 | Cross-references point to brief sections 10.4 / 10.5 for the KB content rule and release checks; they are in brief section 10.6 (and spec 8.4). | Follow section 10.6. | No |
+| C-002 | Brief 12.2 vs spec 9.3 | `GET /v1/kb/decisiontypes` (brief) vs `/v1/kb/decision-types` (spec). | Use the spec's hyphenated path; it becomes the contract snapshot. | No |
+| C-003 | Brief 12.1 vs spec 10.3 and 10.4 | `usage_events.purpose` and `LLMClient.purpose` allow `explain`, `debate_turn`, `judge`. Arm A (one strong model, no KB) is a model call with none of these purposes. | Add one value for arm A when M7 starts, record it in an ADR. The brief already allows extending "only if needed". | No |
+| C-004 | Report (Phase 0 row) vs brief 8.1 | The report lists Langfuse Hobby, promptfoo and optionally Label Studio as Phase 0 reuse. The brief says skip them (usage goes to our own tables; the blind page is built in-house). | Brief wins for this phase. They stay in the licence register as Plan / Check. | No |
+| C-005 | Spec 17.2 vs exact computation | The spec says 150 judgments at a 60% preference is "significant at about p = 0.02 by the normal approximation". Exact binomial: 90 of 150 gives one-sided p = 0.0088 and two-sided p = 0.0176. So "about 0.02" is the two-sided value. At 100 judgments, 60 of 100 gives one-sided 0.0284 and two-sided 0.0569, so it fails alpha = 0.025 either way; 61 of 100 is the smallest passing count one-sided. At 150, 88 of 150 (58.7%) already passes one-sided, so the 60% preference floor is the binding rule there. | Not a material numeric conflict. The pre-registration is drafted one-sided exact as the brief says, and the sidedness is flagged for the founder. Unit tests in M10 lock these numbers. | Yes, but only the one-sided vs two-sided choice before the lock |
+| C-006 | Spec 8.2 vs brief 10.6 | Spec: `kb/fixtures/` holds golden designs for rule and calculator tests. Brief: `kb/fixtures/` holds FAKE KB records, never shipped. | Brief wins. Fake records live in `kb/fixtures/`; golden designs live in `packages/core/src/test/golden/`. | No |
+| C-007 | Spec 16.2 vs brief 10.4 | Spec Phase 0 rules: R-01..R-07 and E-1..E-4. The brief adds R-09 and `security/redact` (because Phase 0 sends scenario text to models) and makes E-5, E-6, R-08, R-10, R-11 optional. | Brief wins. R-09 and redaction are implemented; optional items only if cheap. | No |
+| C-008 | Spec 10.3 vs brief 12.1 | Spec `usage_events.user_id text NOT NULL REFERENCES "user"`; `debates.user_id` likewise. No `user` table exists in Phase 0. | Brief wins: both nullable, no FK, FK added later by an expand-and-contract migration. | No |
+| C-009 | Spec 4.13 / Appendix A vs rule 1 | Spec lists library versions read from the registry on 17 Oct 2026 (for example React Flow 12.12.0, Router 8). | Versions come from the lockfile at install time. The spec's numbers are not used. | No |
+
+## Open
+
+C-005 sidedness. The brief asks for a one-sided exact test as the draft and for the founder to decide. Decide before `pnpm phase0:lock`.

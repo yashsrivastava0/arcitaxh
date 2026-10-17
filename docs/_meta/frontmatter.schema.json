@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "frontmatter.schema.json",
+  "title": "Docs frontmatter",
+  "description": "Required on every Markdown file under docs/ except 00-inbox, 01-source, _archive, _templates, _meta and files named README.md, INDEX.md or CLAUDE.md. `category` must equal the category folder (see categories.json).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "title",
+    "category",
+    "type",
+    "status",
+    "tags",
+    "created",
+    "updated",
+    "verified_on",
+    "author",
+    "sources",
+    "supersedes",
+    "related",
+    "confidence_tags"
+  ],
+  "properties": {
+    "title": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "category": {
+      "type": "string",
+      "enum": [
+        "market-and-competitors",
+        "pricing-and-payments",
+        "legal-licensing-compliance",
+        "kb-sources",
+        "debate-and-evals",
+        "llm-providers-and-gateways",
+        "infrastructure-and-hosting",
+        "frontend-and-canvas",
+        "acquisition-and-growth",
+        "specs",
+        "decisions",
+        "phases",
+        "runbooks",
+        "validation"
+      ]
+    },
+    "type": { "type": "string", "enum": ["research", "spec", "decision", "runbook", "plan", "note", "source"] },
+    "status": { "type": "string", "enum": ["draft", "reviewed", "verified", "superseded", "archived"] },
+    "tags": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "created": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "updated": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "verified_on": {
+      "description": "Date the facts were checked against their sources, or null.",
+      "anyOf": [{ "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" }, { "type": "null" }]
+    },
+    "author": { "type": "string", "enum": ["founder", "agent", "external"] },
+    "sources": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "supersedes": { "description": "Relative paths. Every target must exist.", "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "related": { "description": "Relative paths. Every target must exist.", "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "confidence_tags": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["Verified", "Decision", "Recommendation", "Assumption", "Default", "Open"] }
+    },
+    "adr": { "description": "ADR files only, for example ADR-006.", "type": "string", "pattern": "^ADR-\\d{3}$" },
+    "adr_status": { "description": "ADR files only.", "type": "string", "enum": ["Decision", "Recommendation", "Open", "Assumption"] }
+  }
+}
