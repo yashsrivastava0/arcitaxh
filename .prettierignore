@@ -1,0 +1,10 @@
+node_modules
+dist
+coverage
+pnpm-lock.yaml
+# Docs and agent files are Markdown/YAML written for humans and checked by docs:check.
+docs
+.claude
+*.md
+# Generated
+kb/schema

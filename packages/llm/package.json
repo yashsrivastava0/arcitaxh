@@ -1,0 +1,14 @@
+{
+  "name": "@product/llm",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "description": "LLMClient, fake client, adapters, prompts, debate runner, arms.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  }
+}

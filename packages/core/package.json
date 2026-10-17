@@ -1,0 +1,14 @@
+{
+  "name": "@product/core",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "description": "Pure TypeScript core: types, pipeline, rules, calculators, grounding validator. No I/O.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  }
+}

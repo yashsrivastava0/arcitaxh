@@ -1,0 +1,11 @@
+{
+  "name": "@product/tsconfig",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "description": "Shared TypeScript presets extending the root tsconfig.base.json.",
+  "files": [
+    "node.json",
+    "browser.json"
+  ]
+}

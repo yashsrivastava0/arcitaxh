@@ -1,0 +1,14 @@
+{
+  "name": "@product/kb",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "description": "Knowledge-base release logic: freshness, checks, loader and bundle.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  }
+}
