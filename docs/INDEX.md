@@ -4,7 +4,7 @@
 
 Registry of every document under `docs/` with frontmatter. Read this first, then open only the files you need. Sorted by `updated` (newest first) within each category.
 
-44 entries (41 documents, 3 source files).
+48 entries (45 documents, 3 source files).
 
 ## source
 
@@ -60,6 +60,10 @@ Canonical source documents. No frontmatter; read-only.
 | ADR-032: Repository layout | decision | draft | 2026-10-18 | [04-decisions/0032-repository-layout.md](./04-decisions/0032-repository-layout.md) |
 | ADR-033: Package manager and runtime pins | decision | draft | 2026-10-18 | [04-decisions/0033-package-manager-and-runtime-pins.md](./04-decisions/0033-package-manager-and-runtime-pins.md) |
 | ADR-034: Docs registry and frontmatter tooling | decision | draft | 2026-10-18 | [04-decisions/0034-docs-registry-and-frontmatter-tooling.md](./04-decisions/0034-docs-registry-and-frontmatter-tooling.md) |
+| ADR-035: Lint, format and the TypeScript pin | decision | draft | 2026-10-18 | [04-decisions/0035-lint-format-and-typescript-pin.md](./04-decisions/0035-lint-format-and-typescript-pin.md) |
+| ADR-036: Test runner Vitest | decision | draft | 2026-10-18 | [04-decisions/0036-test-runner-vitest.md](./04-decisions/0036-test-runner-vitest.md) |
+| ADR-037: Dependency boundary enforcement | decision | draft | 2026-10-18 | [04-decisions/0037-dependency-boundary-enforcement.md](./04-decisions/0037-dependency-boundary-enforcement.md) |
+| ADR-038: Licence gate, notices and secret scan | decision | draft | 2026-10-18 | [04-decisions/0038-licence-gate-and-notices.md](./04-decisions/0038-licence-gate-and-notices.md) |
 
 ## phases
 

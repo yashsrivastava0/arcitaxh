@@ -21,3 +21,4 @@ Anything that seems to need work outside brief section 1 goes here and is not bu
 | Date | Item | Why it came up | Belongs to |
 |---|---|---|---|
 | 2026-10-18 | `.claude/commands/` files are merged into skills in current Claude Code (still work). Consider moving the slash commands to `.claude/skills/` later. | Agent-config research during M0. | Housekeeping, any time |
+| 2026-10-18 | `PLAN2.MD` in the repository root is the Phase 1 build brief (canvas core). It says Phase 1 starts only after the Phase 0 gate passes or the founder instructs it in writing; neither has happened, so nothing from it is built. Suggest moving it to `docs/05-phases/phase-1/` (it is the founder's file, so it was not moved). | Appeared in the working tree during M0. | Phase 1 |

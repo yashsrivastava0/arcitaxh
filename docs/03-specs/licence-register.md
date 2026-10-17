@@ -93,13 +93,31 @@ Each row is verified from the installed package's own metadata and licence file 
 | Package | Licence (SPDX) | Closed-source OK | Obligation | Status | Verified on | Verified from | Used by |
 |---|---|---|---|---|---|---|---|
 | pnpm | MIT | Yes | Dev tool only; not shipped | Plan | 2026-10-18 | npm registry metadata, `npm view pnpm@12.14.0 license` | root |
-| typescript | Apache-2.0 | Yes | Dev tool only; not shipped. Keep the notice | Plan | 2026-10-18 | installed package.json `license` field (7.0.2) | root |
+| typescript | Apache-2.0 | Yes | Dev tool only; not shipped. Pinned to 6.0.3 (see ADR-035) | Plan | 2026-10-18 | installed package.json `license` field (6.0.3), via `pnpm licenses list -r --json` | root |
 | tsx | MIT | Yes | Dev tool only; not shipped | Plan | 2026-10-18 | installed package.json `license` field (4.23.15) | root |
 | esbuild | MIT | Yes | Dev tool only (tsx dependency); build script approved by name | Plan | 2026-10-18 | installed package.json `license` field (0.28.2) | root (transitive of tsx) |
 | @types/node | MIT | Yes | Dev types only; not shipped | Plan | 2026-10-18 | installed package.json `license` field (24.19.2) | root |
 | yaml | ISC | Yes | Tool dependency; keep the notice | Plan | 2026-10-18 | installed package.json `license` field and LICENSE file (2.9.1) | tools/docs-index |
 | ajv | MIT | Yes | Tool dependency; keep the notice | Plan | 2026-10-18 | installed package.json `license` field and LICENSE file (8.20.0) | tools/docs-index |
+| vitest | MIT | Yes | Dev tool only; not shipped | Plan | 2026-10-18 | installed package.json `license` field (5.0.5), via `pnpm licenses list -r --json` | root |
+| eslint | MIT | Yes | Dev tool only; not shipped | Plan | 2026-10-18 | installed package.json `license` field (10.13.0), via `pnpm licenses list -r --json` | root |
+| @eslint/js | MIT | Yes | Dev tool only; not shipped | Plan | 2026-10-18 | installed package.json `license` field (10.0.1), via `pnpm licenses list -r --json` | root |
+| typescript-eslint | MIT | Yes | Dev tool only; not shipped. Caps TypeScript at below 6.1 (ADR-035) | Plan | 2026-10-18 | installed package.json `license` field (8.71.2), via `pnpm licenses list -r --json` | root |
+| prettier | MIT | Yes | Dev tool only; not shipped | Plan | 2026-10-18 | installed package.json `license` field (3.9.10), via `pnpm licenses list -r --json` | root |
+| dependency-cruiser | MIT | Yes | Dev tool only; not shipped | Plan | 2026-10-18 | installed package.json `license` field (18.6.0), via `pnpm licenses list -r --json` | root |
+| vite | MIT | Yes | Dev tool only for now (transitive of vitest); apps/web will depend on it directly in M9. Keep the notice if it is ever bundled | Plan | 2026-10-18 | installed package.json `license` field (8.3.4), via `pnpm licenses list -r --json` | root (transitive of vitest) |
+| node | MIT OR BSD OR bsd OR GPLv3 OR ISC OR zlib | Yes | Node.js runtime, dev only (downloaded by pnpm `devEngines` so scripts run on the pinned LTS); not shipped. Node.js itself is MIT; this string aggregates the licences of its bundled third-party components, and we rely on MIT | Plan | 2026-10-18 | installed package.json `license` field and LICENSE file (24.22.0), via `pnpm licenses list -r --json` | root |
 
 ## 3. Resolution of "Check" items
 
-Nothing resolved yet. Items stay Check until verified from the package. Promptfoo, Label Studio, Typst and Next.js are not used in Phase 0 and are not installed.
+- **Vite** (Check in Appendix B, "believed MIT"): resolved 2026-10-18. The installed package vite 8.3.4 declares `license: MIT` (read with `pnpm licenses list -r --json`). Status: Plan.
+- **promptfoo, Label Studio, Typst, Next.js**: still Check. They are not used in Phase 0 and are not installed (brief 8.1 skips promptfoo and Label Studio; Typst is an export option; ADR-030 recommends Vite over Next.js).
+
+## 4. Dev-only exceptions (licences outside the allow-list)
+
+The allow-list (MIT, ISC, Apache-2.0, BSD-2-Clause, BSD-3-Clause, 0BSD, CC0-1.0) is strict for **production** dependencies. A **dev-only** transitive dependency with another clear licence may be accepted here, by name, with a reason. The hard-deny list (GPL, AGPL, LGPL, SSPL, BUSL, Elastic, FSL, UNLICENSED, unknown, non-commercial) is never excepted. `pnpm licences:check` fails on any dev dependency outside the allow-list that has no row here.
+
+| Licence (SPDX) | Packages | Why it is acceptable | Verified on |
+|---|---|---|---|
+| MPL-2.0 | `lightningcss*` | File-level copyleft only. A transitive dev dependency of Vite (CSS transforms at build time). It is never distributed or bundled into a build output and we do not modify its files, so no MPL obligation arises. Re-check if a build ever ships it. | 2026-10-18 |
+| BlueOak-1.0.0 | minimatch | Blue Oak Model License: a permissive licence comparable to MIT/ISC (requires keeping the notice). Transitive dev dependency. | 2026-10-18 |
