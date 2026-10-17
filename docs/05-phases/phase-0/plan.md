@@ -53,8 +53,8 @@ Note on order: M5 and M6 need only the core types and the `KBReader` port, so th
 |---|---|---|---|
 | A1 | Repository is its own git repo at `ANIMAX/`, branch `main`. The enclosing home-directory repo is not touched. | This plan | Founder objects |
 | A2 | Node 24 LTS (`24.22.0`, released 2026-10-14) is pinned in `.nvmrc` and `engines`. The local Node is 25.1.0 (a Current, non-LTS release) and still works. | Brief 4: "current LTS at build time" | LTS changes |
-| A3 | pnpm 12.14.0 (MIT), installed globally on the dev machine. | Brief 4 | - |
-| A4 | Test runner Vitest; linter ESLint + Prettier unless typescript-eslint cannot support the TypeScript version in use, in which case Biome. | Brief 8.1, Q5 | M1 install |
+| A3 | pnpm 12.14.0 (MIT), installed globally on the dev machine. Scripts run on a Node 24.22.0 runtime that pnpm downloads into `node_modules` (`devEngines`), because the machine has Node 25.1.0 and dependency-cruiser refuses it (ADR-033). | Brief 4 | - |
+| A4 | Test runner Vitest; linter ESLint + Prettier. RESOLVED in M1: TypeScript is pinned to 6.0.3 because typescript-eslint supports only below 6.1 (ADR-035, ADR-036). | Brief 8.1, Q5 | typescript-eslint supports TypeScript 7 |
 | A5 | Frontend is Vite + React + React Router, plain pages, marketing routes prerendered later (ADR-030 stays "Recommendation, pending founder"). | Brief 12.3, Q6 | Founder decides |
 | A6 | LICENSE owner is a placeholder. Package scope `@product/*`. Product name stays "working name". | Brief Q4, Q8 | Founder names the product |
 | A7 | Internal packages export TypeScript source (`exports: ./src/index.ts`) and are consumed by Vite, Vitest and tsx directly; module resolution is `Bundler`. No build step for libraries. | This plan | A consumer needs plain Node ESM output |
@@ -66,7 +66,7 @@ Note on order: M5 and M6 need only the core types and the `KBReader` port, so th
 
 | # | Risk | Mitigation |
 |---|---|---|
-| R1 | The TypeScript line in the registry is 7.x. Vitest, typescript-eslint, tsx and other tools may not support it yet. | Check peer ranges at install. Pin the newest TypeScript that the toolchain supports and record the choice in an ADR. Never downgrade silently. |
+| R1 | The TypeScript line in the registry is 7.x; tools may not support it. **Materialised in M1**: typescript-eslint caps at below 6.1, so TypeScript is pinned to 6.0.3 (ADR-035). | Revisit when typescript-eslint adds TypeScript 7. |
 | R2 | Low-RAM Windows machine. Docker Postgres (M8) and Chromium (M11) are heavy. | Run them one at a time. CI uses a service container. Never restart Docker unasked. |
 | R3 | The brief and the spec differ in small ways (section cross-references, an endpoint path, what `kb/fixtures` holds). | Logged in conflicts.md. None affects scope, cost or licences. |
 | R4 | There are no real KB records until the founder promotes proposals. Real-data scenarios cannot exist yet. | Fake `vendor.example` fixtures for all tests; scenarios marked fixture-data until records are promoted. |
