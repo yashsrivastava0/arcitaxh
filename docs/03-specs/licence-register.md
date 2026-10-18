@@ -97,7 +97,7 @@ Each row is verified from the installed package's own metadata and licence file 
 | tsx | MIT | Yes | Dev tool only; not shipped | Plan | 2026-10-18 | installed package.json `license` field (4.23.15) | root |
 | esbuild | MIT | Yes | Dev tool only (tsx dependency); build script approved by name | Plan | 2026-10-18 | installed package.json `license` field (0.28.2) | root (transitive of tsx) |
 | @types/node | MIT | Yes | Dev types only; not shipped | Plan | 2026-10-18 | installed package.json `license` field (24.19.2) | root |
-| yaml | ISC | Yes | Tool dependency; keep the notice | Plan | 2026-10-18 | installed package.json `license` field and LICENSE file (2.9.1) | tools/docs-index |
+| yaml | ISC | Yes | Runtime dependency of packages/kb and tools/docs-index (parses KB and docs YAML); keep the notice | Plan | 2026-10-18 | installed package.json `license` field and LICENSE file (2.9.1) | packages/kb, tools/docs-index |
 | ajv | MIT | Yes | Tool dependency; keep the notice | Plan | 2026-10-18 | installed package.json `license` field and LICENSE file (8.20.0) | tools/docs-index |
 | vitest | MIT | Yes | Dev tool only; not shipped | Plan | 2026-10-18 | installed package.json `license` field (5.0.5), via `pnpm licenses list -r --json` | root |
 | eslint | MIT | Yes | Dev tool only; not shipped | Plan | 2026-10-18 | installed package.json `license` field (10.13.0), via `pnpm licenses list -r --json` | root |

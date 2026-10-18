@@ -10,5 +10,9 @@
   },
   "scripts": {
     "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@product/core": "workspace:*",
+    "yaml": "^2.9.1"
   }
 }

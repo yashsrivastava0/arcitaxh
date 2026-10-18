@@ -29,12 +29,13 @@ Updated at the end of every session. Read this first when resuming.
 |---|---|---|
 | M0 | Repo skeleton, docs system, agent config | done (acceptance checked 2026-10-18) |
 | M1 | Tooling, boundaries, licence gate, CI | done (acceptance checked 2026-10-18; workflow not yet run on GitHub) |
-| M2 | Core types, schemas, hashing | next |
-| M3-M11 | | not started |
+| M2 | Core types, schemas, hashing | done (102 core tests; independent purity review found no violations; enforcement hardened, see ADR-037) |
+| M3 | KB package, loader, bundle, checks, fixtures | in progress: `packages/kb` release logic done (39 tests); tools, bundle reader, fixtures, decision type still to do |
+| M4-M11 | | not started |
 
 ## Next
 
-M2: core types and Zod schemas (ContextProfile, MustHave, DesignGraph with invariants I1-I8, Verdict, Reason, Finding, Outcome), ports (types only, including all repository ports and the KB record schemas per conflicts.md C-010), canonical JSON, pure-JS SHA-256 (`@noble/hashes`, licence to verify), `inputsHash`, property tests (fast-check, licence to verify), config defaults loader.
+Finish M3: KB bundle schema and pure bundle-backed `KBReader` in core; `tools/kb-check`, `kb-build`, `kb-propose`, `kb:sweep`; JSON Schema generation; `vector-store` decision type; fake fixture KB; CHANGELOG. Only `vector-store` is authored until question 1 is answered.
 
 ## Blockers and questions
 
