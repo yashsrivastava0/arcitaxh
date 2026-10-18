@@ -1,0 +1,22 @@
+id: limit.managed-service-b.free-tier.2026-10
+type: limit
+decision_type: vector-store
+subject: option.managed-service-b
+body:
+  scope: free_tier
+  metric: stored_vectors
+  value: 1000000
+  unit: vectors
+  period: none
+  overage_behaviour: overage_billed
+  pauses_after_inactivity: true
+  scales_to_zero: false
+source:
+  url: https://vendor.example/managed-service-b/limit
+  quote: 'FAKE FIXTURE: the free tier of managed-service-b stores up to 1,000,000 vectors and pauses after a week of inactivity.'
+  retrieved_on: 2026-10-18
+verification:
+  last_verified: 2026-10-18
+  valid_until: 2026-11-17
+  verified_by: fixture
+curator_note: FAKE FIXTURE record for tests. Not a fact about any product.

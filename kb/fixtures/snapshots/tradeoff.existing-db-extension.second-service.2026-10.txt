@@ -1,0 +1,6 @@
+URL: https://vendor.example/existing-db-extension/tradeoff
+Retrieved: 2026-10-18
+---
+FAKE FIXTURE PAGE (not a real vendor page)
+FAKE FIXTURE: using the existing database avoids a second service but shares its resources.
+This text exists only so the quote check has something to verify against.

@@ -1,0 +1,17 @@
+id: cap.existing-db-extension.deploy-target-platform-fake-edge.2026-10
+type: capability
+decision_type: vector-store
+subject: option.existing-db-extension
+body:
+  capability_id: deploy_target.platform.fake-edge
+  support: no
+  notes: ''
+source:
+  url: https://vendor.example/existing-db-extension/capability
+  quote: 'FAKE FIXTURE: existing-db-extension does not support deploy_target.platform.fake-edge.'
+  retrieved_on: 2026-10-18
+verification:
+  last_verified: 2026-10-18
+  valid_until: 2027-01-16
+  verified_by: fixture
+curator_note: FAKE FIXTURE record for tests. Not a fact about any product.

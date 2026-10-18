@@ -1,0 +1,6 @@
+URL: https://vendor.example/existing-db-extension/flip
+Retrieved: 2026-10-18
+---
+FAKE FIXTURE PAGE (not a real vendor page)
+FAKE FIXTURE: beyond 100,000 users a dedicated service is usually worth its extra operations.
+This text exists only so the quote check has something to verify against.

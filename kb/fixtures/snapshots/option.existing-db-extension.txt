@@ -1,0 +1,6 @@
+URL: https://vendor.example/existing-db-extension/option
+Retrieved: 2026-10-18
+---
+FAKE FIXTURE PAGE (not a real vendor page)
+FAKE FIXTURE: Existing-database extension (fake) is a both vector store.
+This text exists only so the quote check has something to verify against.

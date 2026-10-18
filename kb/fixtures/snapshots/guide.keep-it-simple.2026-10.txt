@@ -1,0 +1,6 @@
+URL: https://vendor.example/guide/keep-it-simple
+Retrieved: 2026-10-18
+---
+FAKE FIXTURE PAGE (not a real vendor page)
+FAKE FIXTURE: add complexity only when the data says you need it.
+This text exists only so the quote check has something to verify against.

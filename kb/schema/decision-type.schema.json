@@ -1,0 +1,179 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "summary": {
+      "type": "string",
+      "maxLength": 300
+    },
+    "launch": {
+      "type": "boolean"
+    },
+    "palette_types": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "database",
+          "cache",
+          "queue",
+          "agent_runtime",
+          "vector_store",
+          "model_provider",
+          "embedding_model",
+          "object_storage",
+          "api",
+          "client",
+          "authentication",
+          "observability"
+        ]
+      }
+    },
+    "required_context": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "type": "string",
+            "enum": [
+              "purpose",
+              "usersNow",
+              "usersIn12Months",
+              "budget",
+              "monthlyCeilingUsd",
+              "deployTarget",
+              "existingStack",
+              "team.size",
+              "team.experience",
+              "mustHaves"
+            ]
+          },
+          "question": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          }
+        },
+        "required": [
+          "field",
+          "question"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "elimination": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "E-1",
+          "E-2",
+          "E-3",
+          "E-4",
+          "E-5",
+          "E-6"
+        ]
+      }
+    },
+    "design_rules": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^R-\\d{2}$"
+      }
+    },
+    "deferral_option": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^[a-z0-9][a-z0-9._-]*$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "applies_when": {
+      "maxItems": 10,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "type": "string",
+            "enum": [
+              "purpose",
+              "usersNow",
+              "usersIn12Months",
+              "budget",
+              "monthlyCeilingUsd",
+              "deployTarget",
+              "existingStack",
+              "team.size",
+              "team.experience",
+              "mustHaves"
+            ]
+          },
+          "op": {
+            "type": "string",
+            "enum": [
+              "eq",
+              "neq",
+              "lte",
+              "gte",
+              "includes"
+            ]
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 200
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              }
+            ]
+          }
+        },
+        "required": [
+          "field",
+          "op",
+          "value"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "id",
+    "title",
+    "summary",
+    "launch",
+    "palette_types",
+    "required_context",
+    "elimination",
+    "design_rules",
+    "deferral_option",
+    "applies_when"
+  ],
+  "additionalProperties": false
+}

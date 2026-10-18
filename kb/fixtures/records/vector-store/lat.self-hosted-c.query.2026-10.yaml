@@ -1,0 +1,21 @@
+id: lat.self-hosted-c.query.2026-10
+type: latency_profile
+decision_type: vector-store
+subject: option.self-hosted-c
+body:
+  operation: nearest_neighbour_query
+  region: eu-example-1
+  p50_ms: 15
+  p95_ms: 45
+  basis: first_party_measured
+  measured_on: 2026-10-18
+  sample_conditions: FAKE FIXTURE sample
+source:
+  url: https://vendor.example/self-hosted-c/latency_profile
+  quote: 'FAKE FIXTURE: self-hosted-c answers a nearest-neighbour query in a median of 15 ms and 95 percent within 45 ms.'
+  retrieved_on: 2026-10-18
+verification:
+  last_verified: 2026-10-18
+  valid_until: 2026-11-01
+  verified_by: fixture
+curator_note: FAKE FIXTURE record for tests. Not a fact about any product.

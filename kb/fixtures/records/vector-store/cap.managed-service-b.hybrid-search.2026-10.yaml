@@ -1,0 +1,17 @@
+id: cap.managed-service-b.hybrid-search.2026-10
+type: capability
+decision_type: vector-store
+subject: option.managed-service-b
+body:
+  capability_id: hybrid_search
+  support: no
+  notes: ''
+source:
+  url: https://vendor.example/managed-service-b/capability
+  quote: 'FAKE FIXTURE: managed-service-b does not support hybrid_search.'
+  retrieved_on: 2026-10-18
+verification:
+  last_verified: 2026-10-18
+  valid_until: 2027-01-16
+  verified_by: fixture
+curator_note: FAKE FIXTURE record for tests. Not a fact about any product.

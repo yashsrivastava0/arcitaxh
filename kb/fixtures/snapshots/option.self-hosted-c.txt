@@ -1,0 +1,6 @@
+URL: https://vendor.example/self-hosted-c/option
+Retrieved: 2026-10-18
+---
+FAKE FIXTURE PAGE (not a real vendor page)
+FAKE FIXTURE: Self-hosted C (fake) is a self-hosted vector store.
+This text exists only so the quote check has something to verify against.

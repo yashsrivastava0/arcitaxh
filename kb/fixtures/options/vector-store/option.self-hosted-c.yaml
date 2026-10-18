@@ -1,0 +1,40 @@
+id: option.self-hosted-c
+type: option
+decision_type: vector-store
+subject: option.self-hosted-c
+body:
+  name: Self-hosted C (fake)
+  vendor: vendor.example
+  categories:
+    - vector-store
+  platform: null
+  deployment: self_hosted
+  regions:
+    - eu-example-1
+    - us-example-1
+  licence: FAKE-LICENCE
+  status: generally_available
+  migration_effort: high
+  ops_burden: high
+  applies_when: []
+  why_pick:
+    - text: You control the data and the infrastructure, which helps when strict residency matters.
+      applies_when:
+        - field: mustHaves
+          op: includes
+          value: eu_data_residency
+  why_not:
+    - text: Running it yourself is real operational work, which is hard for a small team.
+      applies_when:
+        - field: team.size
+          op: eq
+          value: solo
+source:
+  url: https://vendor.example/self-hosted-c/option
+  quote: 'FAKE FIXTURE: Self-hosted C (fake) is a self-hosted vector store.'
+  retrieved_on: 2026-10-18
+verification:
+  last_verified: 2026-10-18
+  valid_until: 2027-01-16
+  verified_by: fixture
+curator_note: FAKE FIXTURE record for tests. Not a fact about any product.

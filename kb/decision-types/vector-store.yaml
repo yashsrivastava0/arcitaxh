@@ -1,0 +1,30 @@
+# Decision type: vector-store. STRUCTURE ONLY.
+# No real option, price, limit, capability or latency record exists yet. Real records arrive only when the founder
+# promotes a reviewed proposal from kb/proposals/ (nothing here is written from memory). Until then a verdict for this
+# decision type is `kb_gap`, never an invented answer.
+id: vector-store
+title: Vector store
+summary: Where embeddings are stored and searched for retrieval.
+launch: true
+palette_types:
+  - vector_store
+required_context:
+  - field: usersNow
+    question: About how many users do you have now?
+  - field: existingStack
+    question: Which database or platform are you already using?
+elimination:
+  - E-1
+  - E-2
+  - E-3
+  - E-4
+  - E-5
+  - E-6
+design_rules:
+  - R-05
+  - R-07
+# The deferral option ("keep vector search inside your existing database") is an option RECORD, and a real option record
+# needs a verified source. Set deferral_option to its id once that record has been promoted. kb:check fails on a
+# dangling deferral option, so it cannot be set early by mistake.
+deferral_option: null
+applies_when: []

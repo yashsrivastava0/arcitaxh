@@ -1,0 +1,21 @@
+id: price.self-hosted-c.node.2026-10
+type: price
+decision_type: vector-store
+subject: option.self-hosted-c
+body:
+  currency: USD
+  unit: fixed_per_month
+  unit_name: null
+  amount: '40'
+  tier: small-node
+  billing_period: month
+  includes: ''
+source:
+  url: https://vendor.example/self-hosted-c/price
+  quote: 'FAKE FIXTURE: the recommended small node for self-hosted-c costs 40 USD per month.'
+  retrieved_on: 2026-10-18
+verification:
+  last_verified: 2026-10-18
+  valid_until: 2026-11-17
+  verified_by: fixture
+curator_note: FAKE FIXTURE record for tests. Not a fact about any product.

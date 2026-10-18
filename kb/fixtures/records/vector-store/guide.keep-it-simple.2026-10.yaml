@@ -1,0 +1,18 @@
+id: guide.keep-it-simple.2026-10
+type: guidance
+decision_type: vector-store
+subject: option.existing-db-extension
+body:
+  source_document: Fake architecture guide
+  licence: CC BY 4.0
+  paraphrase: Add complexity only when the data says you need it.
+  grounded_in: https://vendor.example/guide/keep-it-simple
+source:
+  url: https://vendor.example/guide/keep-it-simple
+  quote: 'FAKE FIXTURE: add complexity only when the data says you need it.'
+  retrieved_on: 2026-10-18
+verification:
+  last_verified: 2026-10-18
+  valid_until: 2027-04-16
+  verified_by: fixture
+curator_note: FAKE FIXTURE record for tests. Not a fact about any product.

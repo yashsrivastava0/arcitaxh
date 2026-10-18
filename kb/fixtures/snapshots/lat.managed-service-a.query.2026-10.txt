@@ -1,0 +1,6 @@
+URL: https://vendor.example/managed-service-a/latency_profile
+Retrieved: 2026-10-18
+---
+FAKE FIXTURE PAGE (not a real vendor page)
+FAKE FIXTURE: managed-service-a answers a nearest-neighbour query in a median of 12 ms and 95 percent within 40 ms.
+This text exists only so the quote check has something to verify against.

@@ -1,0 +1,17 @@
+id: cap.managed-service-a.deploy-target-platform-fake-edge.2026-10
+type: capability
+decision_type: vector-store
+subject: option.managed-service-a
+body:
+  capability_id: deploy_target.platform.fake-edge
+  support: yes
+  notes: ''
+source:
+  url: https://vendor.example/managed-service-a/capability
+  quote: 'FAKE FIXTURE: managed-service-a supports deploy_target.platform.fake-edge.'
+  retrieved_on: 2026-10-18
+verification:
+  last_verified: 2026-10-18
+  valid_until: 2027-01-16
+  verified_by: fixture
+curator_note: FAKE FIXTURE record for tests. Not a fact about any product.

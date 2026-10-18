@@ -1,0 +1,6 @@
+URL: https://vendor.example/managed-service-a/antipattern
+Retrieved: 2026-10-18
+---
+FAKE FIXTURE PAGE (not a real vendor page)
+FAKE FIXTURE: a read-heavy path with no cache sends every query to the store.
+This text exists only so the quote check has something to verify against.

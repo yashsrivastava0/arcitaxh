@@ -1,0 +1,1516 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^[a-z0-9][a-z0-9._-]*$"
+        },
+        "type": {
+          "type": "string",
+          "const": "option"
+        },
+        "decision_type": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+        },
+        "subject": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "body": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "vendor": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "categories": {
+              "minItems": 1,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64
+              }
+            },
+            "platform": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 64
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "deployment": {
+              "type": "string",
+              "enum": [
+                "managed",
+                "self_hosted",
+                "both"
+              ]
+            },
+            "regions": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64
+              }
+            },
+            "licence": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "generally_available",
+                "beta",
+                "deprecated"
+              ]
+            },
+            "migration_effort": {
+              "type": "string",
+              "enum": [
+                "low",
+                "medium",
+                "high",
+                "unknown"
+              ]
+            },
+            "ops_burden": {
+              "type": "string",
+              "enum": [
+                "low",
+                "medium",
+                "high",
+                "unknown"
+              ]
+            },
+            "applies_when": {
+              "maxItems": 10,
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "field": {
+                    "type": "string",
+                    "enum": [
+                      "purpose",
+                      "usersNow",
+                      "usersIn12Months",
+                      "budget",
+                      "monthlyCeilingUsd",
+                      "deployTarget",
+                      "existingStack",
+                      "team.size",
+                      "team.experience",
+                      "mustHaves"
+                    ]
+                  },
+                  "op": {
+                    "type": "string",
+                    "enum": [
+                      "eq",
+                      "neq",
+                      "lte",
+                      "gte",
+                      "includes"
+                    ]
+                  },
+                  "value": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "boolean"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "field",
+                  "op",
+                  "value"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "why_pick": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "applies_when": {
+                    "maxItems": 10,
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "field": {
+                          "type": "string",
+                          "enum": [
+                            "purpose",
+                            "usersNow",
+                            "usersIn12Months",
+                            "budget",
+                            "monthlyCeilingUsd",
+                            "deployTarget",
+                            "existingStack",
+                            "team.size",
+                            "team.experience",
+                            "mustHaves"
+                          ]
+                        },
+                        "op": {
+                          "type": "string",
+                          "enum": [
+                            "eq",
+                            "neq",
+                            "lte",
+                            "gte",
+                            "includes"
+                          ]
+                        },
+                        "value": {
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "maxLength": 200
+                            },
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "boolean"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "field",
+                        "op",
+                        "value"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "required": [
+                  "text",
+                  "applies_when"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "why_not": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000
+                  },
+                  "applies_when": {
+                    "maxItems": 10,
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "field": {
+                          "type": "string",
+                          "enum": [
+                            "purpose",
+                            "usersNow",
+                            "usersIn12Months",
+                            "budget",
+                            "monthlyCeilingUsd",
+                            "deployTarget",
+                            "existingStack",
+                            "team.size",
+                            "team.experience",
+                            "mustHaves"
+                          ]
+                        },
+                        "op": {
+                          "type": "string",
+                          "enum": [
+                            "eq",
+                            "neq",
+                            "lte",
+                            "gte",
+                            "includes"
+                          ]
+                        },
+                        "value": {
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "maxLength": 200
+                            },
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "boolean"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "field",
+                        "op",
+                        "value"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "required": [
+                  "text",
+                  "applies_when"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "name",
+            "vendor",
+            "categories",
+            "platform",
+            "deployment",
+            "regions",
+            "licence",
+            "status",
+            "migration_effort",
+            "ops_burden",
+            "applies_when",
+            "why_pick",
+            "why_not"
+          ],
+          "additionalProperties": false
+        },
+        "source": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "maxLength": 2000,
+              "format": "uri"
+            },
+            "quote": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            "retrieved_on": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            }
+          },
+          "required": [
+            "url",
+            "quote",
+            "retrieved_on"
+          ],
+          "additionalProperties": false
+        },
+        "verification": {
+          "type": "object",
+          "properties": {
+            "last_verified": {
+              "type": "null"
+            },
+            "valid_until": {
+              "type": "null"
+            },
+            "verified_by": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "last_verified",
+            "valid_until",
+            "verified_by"
+          ],
+          "additionalProperties": false
+        },
+        "curator_note": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "status": {
+          "type": "string",
+          "const": "proposed"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "decision_type",
+        "subject",
+        "body",
+        "source",
+        "verification",
+        "curator_note",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^[a-z0-9][a-z0-9._-]*$"
+        },
+        "type": {
+          "type": "string",
+          "const": "limit"
+        },
+        "decision_type": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+        },
+        "subject": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "body": {
+          "type": "object",
+          "properties": {
+            "scope": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64
+            },
+            "metric": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64
+            },
+            "period": {
+              "type": "string",
+              "enum": [
+                "none",
+                "second",
+                "minute",
+                "hour",
+                "day",
+                "month",
+                "year"
+              ]
+            },
+            "overage_behaviour": {
+              "type": "string",
+              "enum": [
+                "hard_stop",
+                "overage_billed",
+                "auto_upgrade",
+                "throttled"
+              ]
+            },
+            "pauses_after_inactivity": {
+              "type": "boolean"
+            },
+            "scales_to_zero": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "scope",
+            "metric",
+            "value",
+            "unit",
+            "period",
+            "overage_behaviour",
+            "pauses_after_inactivity",
+            "scales_to_zero"
+          ],
+          "additionalProperties": false
+        },
+        "source": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "maxLength": 2000,
+              "format": "uri"
+            },
+            "quote": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            "retrieved_on": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            }
+          },
+          "required": [
+            "url",
+            "quote",
+            "retrieved_on"
+          ],
+          "additionalProperties": false
+        },
+        "verification": {
+          "type": "object",
+          "properties": {
+            "last_verified": {
+              "type": "null"
+            },
+            "valid_until": {
+              "type": "null"
+            },
+            "verified_by": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "last_verified",
+            "valid_until",
+            "verified_by"
+          ],
+          "additionalProperties": false
+        },
+        "curator_note": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "status": {
+          "type": "string",
+          "const": "proposed"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "decision_type",
+        "subject",
+        "body",
+        "source",
+        "verification",
+        "curator_note",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^[a-z0-9][a-z0-9._-]*$"
+        },
+        "type": {
+          "type": "string",
+          "const": "price"
+        },
+        "decision_type": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+        },
+        "subject": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "body": {
+          "type": "object",
+          "properties": {
+            "currency": {
+              "type": "string",
+              "pattern": "^[A-Z]{3}$"
+            },
+            "unit": {
+              "type": "string",
+              "enum": [
+                "per_million_input_tokens",
+                "per_million_cached_input_tokens",
+                "per_million_output_tokens",
+                "per_request",
+                "per_unit",
+                "fixed_per_month"
+              ]
+            },
+            "unit_name": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 64
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "amount": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d{1,12})?$"
+            },
+            "tier": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "billing_period": {
+              "type": "string",
+              "enum": [
+                "none",
+                "month",
+                "year"
+              ]
+            },
+            "includes": {
+              "type": "string",
+              "maxLength": 300
+            }
+          },
+          "required": [
+            "currency",
+            "unit",
+            "unit_name",
+            "amount",
+            "tier",
+            "billing_period",
+            "includes"
+          ],
+          "additionalProperties": false
+        },
+        "source": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "maxLength": 2000,
+              "format": "uri"
+            },
+            "quote": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            "retrieved_on": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            }
+          },
+          "required": [
+            "url",
+            "quote",
+            "retrieved_on"
+          ],
+          "additionalProperties": false
+        },
+        "verification": {
+          "type": "object",
+          "properties": {
+            "last_verified": {
+              "type": "null"
+            },
+            "valid_until": {
+              "type": "null"
+            },
+            "verified_by": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "last_verified",
+            "valid_until",
+            "verified_by"
+          ],
+          "additionalProperties": false
+        },
+        "curator_note": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "status": {
+          "type": "string",
+          "const": "proposed"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "decision_type",
+        "subject",
+        "body",
+        "source",
+        "verification",
+        "curator_note",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^[a-z0-9][a-z0-9._-]*$"
+        },
+        "type": {
+          "type": "string",
+          "const": "capability"
+        },
+        "decision_type": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+        },
+        "subject": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "body": {
+          "type": "object",
+          "properties": {
+            "capability_id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "support": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "partial",
+                "unknown"
+              ]
+            },
+            "notes": {
+              "type": "string",
+              "maxLength": 300
+            }
+          },
+          "required": [
+            "capability_id",
+            "support",
+            "notes"
+          ],
+          "additionalProperties": false
+        },
+        "source": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "maxLength": 2000,
+              "format": "uri"
+            },
+            "quote": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            "retrieved_on": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            }
+          },
+          "required": [
+            "url",
+            "quote",
+            "retrieved_on"
+          ],
+          "additionalProperties": false
+        },
+        "verification": {
+          "type": "object",
+          "properties": {
+            "last_verified": {
+              "type": "null"
+            },
+            "valid_until": {
+              "type": "null"
+            },
+            "verified_by": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "last_verified",
+            "valid_until",
+            "verified_by"
+          ],
+          "additionalProperties": false
+        },
+        "curator_note": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "status": {
+          "type": "string",
+          "const": "proposed"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "decision_type",
+        "subject",
+        "body",
+        "source",
+        "verification",
+        "curator_note",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^[a-z0-9][a-z0-9._-]*$"
+        },
+        "type": {
+          "type": "string",
+          "const": "latency_profile"
+        },
+        "decision_type": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+        },
+        "subject": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "body": {
+          "type": "object",
+          "properties": {
+            "operation": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "region": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64
+            },
+            "p50_ms": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "p95_ms": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "basis": {
+              "type": "string",
+              "enum": [
+                "vendor_documented",
+                "first_party_measured",
+                "third_party_licensed"
+              ]
+            },
+            "measured_on": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            },
+            "sample_conditions": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 300
+            }
+          },
+          "required": [
+            "operation",
+            "region",
+            "p50_ms",
+            "p95_ms",
+            "basis",
+            "measured_on",
+            "sample_conditions"
+          ],
+          "additionalProperties": false
+        },
+        "source": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "maxLength": 2000,
+              "format": "uri"
+            },
+            "quote": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            "retrieved_on": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            }
+          },
+          "required": [
+            "url",
+            "quote",
+            "retrieved_on"
+          ],
+          "additionalProperties": false
+        },
+        "verification": {
+          "type": "object",
+          "properties": {
+            "last_verified": {
+              "type": "null"
+            },
+            "valid_until": {
+              "type": "null"
+            },
+            "verified_by": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "last_verified",
+            "valid_until",
+            "verified_by"
+          ],
+          "additionalProperties": false
+        },
+        "curator_note": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "status": {
+          "type": "string",
+          "const": "proposed"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "decision_type",
+        "subject",
+        "body",
+        "source",
+        "verification",
+        "curator_note",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^[a-z0-9][a-z0-9._-]*$"
+        },
+        "type": {
+          "type": "string",
+          "const": "tradeoff"
+        },
+        "decision_type": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+        },
+        "subject": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "body": {
+          "type": "object",
+          "properties": {
+            "sentence": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            },
+            "applies_when": {
+              "maxItems": 10,
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "field": {
+                    "type": "string",
+                    "enum": [
+                      "purpose",
+                      "usersNow",
+                      "usersIn12Months",
+                      "budget",
+                      "monthlyCeilingUsd",
+                      "deployTarget",
+                      "existingStack",
+                      "team.size",
+                      "team.experience",
+                      "mustHaves"
+                    ]
+                  },
+                  "op": {
+                    "type": "string",
+                    "enum": [
+                      "eq",
+                      "neq",
+                      "lte",
+                      "gte",
+                      "includes"
+                    ]
+                  },
+                  "value": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "boolean"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "field",
+                  "op",
+                  "value"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "sentence",
+            "applies_when"
+          ],
+          "additionalProperties": false
+        },
+        "source": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "maxLength": 2000,
+              "format": "uri"
+            },
+            "quote": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            "retrieved_on": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            }
+          },
+          "required": [
+            "url",
+            "quote",
+            "retrieved_on"
+          ],
+          "additionalProperties": false
+        },
+        "verification": {
+          "type": "object",
+          "properties": {
+            "last_verified": {
+              "type": "null"
+            },
+            "valid_until": {
+              "type": "null"
+            },
+            "verified_by": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "last_verified",
+            "valid_until",
+            "verified_by"
+          ],
+          "additionalProperties": false
+        },
+        "curator_note": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "status": {
+          "type": "string",
+          "const": "proposed"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "decision_type",
+        "subject",
+        "body",
+        "source",
+        "verification",
+        "curator_note",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^[a-z0-9][a-z0-9._-]*$"
+        },
+        "type": {
+          "type": "string",
+          "const": "flip"
+        },
+        "decision_type": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+        },
+        "subject": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "body": {
+          "type": "object",
+          "properties": {
+            "condition": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string",
+                  "enum": [
+                    "purpose",
+                    "usersNow",
+                    "usersIn12Months",
+                    "budget",
+                    "monthlyCeilingUsd",
+                    "deployTarget",
+                    "existingStack",
+                    "team.size",
+                    "team.experience",
+                    "mustHaves"
+                  ]
+                },
+                "op": {
+                  "type": "string",
+                  "enum": [
+                    "eq",
+                    "neq",
+                    "lte",
+                    "gte",
+                    "includes"
+                  ]
+                },
+                "value": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "maxLength": 200
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "boolean"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "field",
+                "op",
+                "value"
+              ],
+              "additionalProperties": false
+            },
+            "explanation": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            }
+          },
+          "required": [
+            "condition",
+            "explanation"
+          ],
+          "additionalProperties": false
+        },
+        "source": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "maxLength": 2000,
+              "format": "uri"
+            },
+            "quote": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            "retrieved_on": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            }
+          },
+          "required": [
+            "url",
+            "quote",
+            "retrieved_on"
+          ],
+          "additionalProperties": false
+        },
+        "verification": {
+          "type": "object",
+          "properties": {
+            "last_verified": {
+              "type": "null"
+            },
+            "valid_until": {
+              "type": "null"
+            },
+            "verified_by": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "last_verified",
+            "valid_until",
+            "verified_by"
+          ],
+          "additionalProperties": false
+        },
+        "curator_note": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "status": {
+          "type": "string",
+          "const": "proposed"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "decision_type",
+        "subject",
+        "body",
+        "source",
+        "verification",
+        "curator_note",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^[a-z0-9][a-z0-9._-]*$"
+        },
+        "type": {
+          "type": "string",
+          "const": "guidance"
+        },
+        "decision_type": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+        },
+        "subject": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "body": {
+          "type": "object",
+          "properties": {
+            "source_document": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "licence": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "paraphrase": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            },
+            "grounded_in": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": [
+            "source_document",
+            "licence",
+            "paraphrase",
+            "grounded_in"
+          ],
+          "additionalProperties": false
+        },
+        "source": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "maxLength": 2000,
+              "format": "uri"
+            },
+            "quote": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            "retrieved_on": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            }
+          },
+          "required": [
+            "url",
+            "quote",
+            "retrieved_on"
+          ],
+          "additionalProperties": false
+        },
+        "verification": {
+          "type": "object",
+          "properties": {
+            "last_verified": {
+              "type": "null"
+            },
+            "valid_until": {
+              "type": "null"
+            },
+            "verified_by": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "last_verified",
+            "valid_until",
+            "verified_by"
+          ],
+          "additionalProperties": false
+        },
+        "curator_note": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "status": {
+          "type": "string",
+          "const": "proposed"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "decision_type",
+        "subject",
+        "body",
+        "source",
+        "verification",
+        "curator_note",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^[a-z0-9][a-z0-9._-]*$"
+        },
+        "type": {
+          "type": "string",
+          "const": "antipattern"
+        },
+        "decision_type": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+        },
+        "subject": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "body": {
+          "type": "object",
+          "properties": {
+            "rule_id": {
+              "type": "string",
+              "pattern": "^R-\\d{2}$"
+            },
+            "description": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            }
+          },
+          "required": [
+            "rule_id",
+            "description"
+          ],
+          "additionalProperties": false
+        },
+        "source": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "maxLength": 2000,
+              "format": "uri"
+            },
+            "quote": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            "retrieved_on": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            }
+          },
+          "required": [
+            "url",
+            "quote",
+            "retrieved_on"
+          ],
+          "additionalProperties": false
+        },
+        "verification": {
+          "type": "object",
+          "properties": {
+            "last_verified": {
+              "type": "null"
+            },
+            "valid_until": {
+              "type": "null"
+            },
+            "verified_by": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "last_verified",
+            "valid_until",
+            "verified_by"
+          ],
+          "additionalProperties": false
+        },
+        "curator_note": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "status": {
+          "type": "string",
+          "const": "proposed"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "decision_type",
+        "subject",
+        "body",
+        "source",
+        "verification",
+        "curator_note",
+        "status"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

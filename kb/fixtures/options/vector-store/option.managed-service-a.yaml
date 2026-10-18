@@ -1,0 +1,39 @@
+id: option.managed-service-a
+type: option
+decision_type: vector-store
+subject: option.managed-service-a
+body:
+  name: Managed Service A (fake)
+  vendor: vendor.example
+  categories:
+    - vector-store
+  platform: platform.fake-cloud-a
+  deployment: managed
+  regions:
+    - us-example-1
+  licence: null
+  status: generally_available
+  migration_effort: medium
+  ops_burden: low
+  applies_when: []
+  why_pick:
+    - text: A fully managed service means no operations work for the team.
+      applies_when:
+        - field: team.size
+          op: eq
+          value: solo
+  why_not:
+    - text: It has no EU hosting, so it cannot meet an EU data-residency requirement.
+      applies_when:
+        - field: mustHaves
+          op: includes
+          value: eu_data_residency
+source:
+  url: https://vendor.example/managed-service-a/option
+  quote: 'FAKE FIXTURE: Managed Service A (fake) is a managed vector store.'
+  retrieved_on: 2026-10-18
+verification:
+  last_verified: 2026-10-18
+  valid_until: 2027-01-16
+  verified_by: fixture
+curator_note: FAKE FIXTURE record for tests. Not a fact about any product.

@@ -1,0 +1,17 @@
+id: cap.existing-db-extension.eu-data-residency.2026-10
+type: capability
+decision_type: vector-store
+subject: option.existing-db-extension
+body:
+  capability_id: eu_data_residency
+  support: yes
+  notes: ''
+source:
+  url: https://vendor.example/existing-db-extension/capability
+  quote: 'FAKE FIXTURE: existing-db-extension supports eu_data_residency.'
+  retrieved_on: 2026-10-18
+verification:
+  last_verified: 2026-10-18
+  valid_until: 2027-01-16
+  verified_by: fixture
+curator_note: FAKE FIXTURE record for tests. Not a fact about any product.

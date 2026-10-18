@@ -1,0 +1,6 @@
+URL: https://vendor.example/managed-service-a/limit
+Retrieved: 2026-10-18
+---
+FAKE FIXTURE PAGE (not a real vendor page)
+FAKE FIXTURE: managed-service-a allows 10 queries per second and throttles requests beyond that.
+This text exists only so the quote check has something to verify against.

@@ -1,0 +1,25 @@
+id: vector-store
+title: Vector store (fake fixture)
+summary: 'FAKE FIXTURE decision type for tests: where embeddings are stored and searched.'
+launch: true
+palette_types:
+  - vector_store
+required_context:
+  - field: usersNow
+    question: About how many users do you have now?
+  - field: budget
+    question: Are you limited to free tiers, or can you pay?
+  - field: existingStack
+    question: Which database are you already using?
+elimination:
+  - E-1
+  - E-2
+  - E-3
+  - E-4
+  - E-5
+  - E-6
+design_rules:
+  - R-05
+  - R-07
+deferral_option: option.existing-db-extension
+applies_when: []

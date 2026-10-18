@@ -1,0 +1,6 @@
+URL: https://vendor.example/managed-service-b/price
+Retrieved: 2026-10-18
+---
+FAKE FIXTURE PAGE (not a real vendor page)
+FAKE FIXTURE: managed-service-b charges 2.50 USD per million stored vectors per month beyond the free tier.
+This text exists only so the quote check has something to verify against.

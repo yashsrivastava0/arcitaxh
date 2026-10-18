@@ -1,0 +1,39 @@
+id: option.managed-service-b
+type: option
+decision_type: vector-store
+subject: option.managed-service-b
+body:
+  name: Managed Service B (fake)
+  vendor: vendor.example
+  categories:
+    - vector-store
+  platform: null
+  deployment: managed
+  regions:
+    - eu-example-1
+  licence: null
+  status: generally_available
+  migration_effort: medium
+  ops_burden: low
+  applies_when: []
+  why_pick:
+    - text: It offers a generous free tier, which suits a free-tiers-only budget.
+      applies_when:
+        - field: budget
+          op: eq
+          value: free_only
+  why_not:
+    - text: It has no hybrid search, so it cannot serve a hybrid-search must-have.
+      applies_when:
+        - field: mustHaves
+          op: includes
+          value: requires_capability
+source:
+  url: https://vendor.example/managed-service-b/option
+  quote: 'FAKE FIXTURE: Managed Service B (fake) is a managed vector store.'
+  retrieved_on: 2026-10-18
+verification:
+  last_verified: 2026-10-18
+  valid_until: 2027-01-16
+  verified_by: fixture
+curator_note: FAKE FIXTURE record for tests. Not a fact about any product.

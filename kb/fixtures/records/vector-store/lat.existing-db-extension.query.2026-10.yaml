@@ -1,0 +1,21 @@
+id: lat.existing-db-extension.query.2026-10
+type: latency_profile
+decision_type: vector-store
+subject: option.existing-db-extension
+body:
+  operation: nearest_neighbour_query
+  region: eu-example-1
+  p50_ms: 20
+  p95_ms: 60
+  basis: first_party_measured
+  measured_on: 2026-10-18
+  sample_conditions: FAKE FIXTURE sample
+source:
+  url: https://vendor.example/existing-db-extension/latency_profile
+  quote: 'FAKE FIXTURE: existing-db-extension answers a nearest-neighbour query in a median of 20 ms and 95 percent within 60 ms.'
+  retrieved_on: 2026-10-18
+verification:
+  last_verified: 2026-10-18
+  valid_until: 2026-11-01
+  verified_by: fixture
+curator_note: FAKE FIXTURE record for tests. Not a fact about any product.

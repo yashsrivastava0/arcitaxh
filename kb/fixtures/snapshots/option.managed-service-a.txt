@@ -1,0 +1,6 @@
+URL: https://vendor.example/managed-service-a/option
+Retrieved: 2026-10-18
+---
+FAKE FIXTURE PAGE (not a real vendor page)
+FAKE FIXTURE: Managed Service A (fake) is a managed vector store.
+This text exists only so the quote check has something to verify against.

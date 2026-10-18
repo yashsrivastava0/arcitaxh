@@ -1,0 +1,45 @@
+id: option.existing-db-extension
+type: option
+decision_type: vector-store
+subject: option.existing-db-extension
+body:
+  name: Existing-database extension (fake)
+  vendor: vendor.example
+  categories:
+    - vector-store
+  platform: platform.fake-db
+  deployment: both
+  regions:
+    - eu-example-1
+    - us-example-1
+  licence: FAKE-LICENCE
+  status: generally_available
+  migration_effort: low
+  ops_burden: low
+  applies_when: []
+  why_pick:
+    - text: You already run a database that offers vector search, so there is nothing new to operate.
+      applies_when:
+        - field: existingStack
+          op: includes
+          value: option.fake-primary-db
+    - text: For a small corpus this is usually enough, and it avoids a second service.
+      applies_when:
+        - field: usersNow
+          op: lte
+          value: 1000
+  why_not:
+    - text: Heavy vector workloads compete with the rest of the database for resources.
+      applies_when:
+        - field: usersIn12Months
+          op: gte
+          value: 100000
+source:
+  url: https://vendor.example/existing-db-extension/option
+  quote: 'FAKE FIXTURE: Existing-database extension (fake) is a both vector store.'
+  retrieved_on: 2026-10-18
+verification:
+  last_verified: 2026-10-18
+  valid_until: 2027-01-16
+  verified_by: fixture
+curator_note: FAKE FIXTURE record for tests. Not a fact about any product.

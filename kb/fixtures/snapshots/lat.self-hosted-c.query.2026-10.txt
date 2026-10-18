@@ -1,0 +1,6 @@
+URL: https://vendor.example/self-hosted-c/latency_profile
+Retrieved: 2026-10-18
+---
+FAKE FIXTURE PAGE (not a real vendor page)
+FAKE FIXTURE: self-hosted-c answers a nearest-neighbour query in a median of 15 ms and 95 percent within 45 ms.
+This text exists only so the quote check has something to verify against.

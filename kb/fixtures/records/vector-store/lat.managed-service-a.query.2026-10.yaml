@@ -1,0 +1,21 @@
+id: lat.managed-service-a.query.2026-10
+type: latency_profile
+decision_type: vector-store
+subject: option.managed-service-a
+body:
+  operation: nearest_neighbour_query
+  region: eu-example-1
+  p50_ms: 12
+  p95_ms: 40
+  basis: first_party_measured
+  measured_on: 2026-10-18
+  sample_conditions: FAKE FIXTURE sample
+source:
+  url: https://vendor.example/managed-service-a/latency_profile
+  quote: 'FAKE FIXTURE: managed-service-a answers a nearest-neighbour query in a median of 12 ms and 95 percent within 40 ms.'
+  retrieved_on: 2026-10-18
+verification:
+  last_verified: 2026-10-18
+  valid_until: 2026-11-01
+  verified_by: fixture
+curator_note: FAKE FIXTURE record for tests. Not a fact about any product.

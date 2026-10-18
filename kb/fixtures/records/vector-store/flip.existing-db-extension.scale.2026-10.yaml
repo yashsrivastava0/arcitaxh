@@ -1,0 +1,19 @@
+id: flip.existing-db-extension.scale.2026-10
+type: flip
+decision_type: vector-store
+subject: option.existing-db-extension
+body:
+  condition:
+    field: usersIn12Months
+    op: gte
+    value: 100000
+  explanation: Switch to a dedicated service when your user count grows past the point where the shared database becomes the bottleneck.
+source:
+  url: https://vendor.example/existing-db-extension/flip
+  quote: 'FAKE FIXTURE: beyond 100,000 users a dedicated service is usually worth its extra operations.'
+  retrieved_on: 2026-10-18
+verification:
+  last_verified: 2026-10-18
+  valid_until: 2027-01-16
+  verified_by: fixture
+curator_note: FAKE FIXTURE record for tests. Not a fact about any product.

@@ -1,0 +1,6 @@
+URL: https://vendor.example/managed-service-a/price
+Retrieved: 2026-10-18
+---
+FAKE FIXTURE PAGE (not a real vendor page)
+FAKE FIXTURE: the standard plan of managed-service-a costs 25 USD per month.
+This text exists only so the quote check has something to verify against.

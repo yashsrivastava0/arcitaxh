@@ -1,0 +1,17 @@
+id: cap.self-hosted-c.hybrid-search.2026-10
+type: capability
+decision_type: vector-store
+subject: option.self-hosted-c
+body:
+  capability_id: hybrid_search
+  support: yes
+  notes: ''
+source:
+  url: https://vendor.example/self-hosted-c/capability
+  quote: 'FAKE FIXTURE: self-hosted-c supports hybrid_search.'
+  retrieved_on: 2026-10-18
+verification:
+  last_verified: 2026-10-18
+  valid_until: 2027-01-16
+  verified_by: fixture
+curator_note: FAKE FIXTURE record for tests. Not a fact about any product.

@@ -1,0 +1,16 @@
+id: anti.read-heavy-no-cache.2026-10
+type: antipattern
+decision_type: vector-store
+subject: option.managed-service-a
+body:
+  rule_id: R-05
+  description: A read-heavy path with no cache sends every query to the vector store.
+source:
+  url: https://vendor.example/managed-service-a/antipattern
+  quote: 'FAKE FIXTURE: a read-heavy path with no cache sends every query to the store.'
+  retrieved_on: 2026-10-18
+verification:
+  last_verified: 2026-10-18
+  valid_until: 2027-01-16
+  verified_by: fixture
+curator_note: FAKE FIXTURE record for tests. Not a fact about any product.

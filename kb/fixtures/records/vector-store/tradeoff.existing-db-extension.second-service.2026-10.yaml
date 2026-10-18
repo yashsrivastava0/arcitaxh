@@ -1,0 +1,19 @@
+id: tradeoff.existing-db-extension.second-service.2026-10
+type: tradeoff
+decision_type: vector-store
+subject: option.existing-db-extension
+body:
+  sentence: Using the existing database avoids a second service, but vector queries share its resources.
+  applies_when:
+    - field: budget
+      op: eq
+      value: free_only
+source:
+  url: https://vendor.example/existing-db-extension/tradeoff
+  quote: 'FAKE FIXTURE: using the existing database avoids a second service but shares its resources.'
+  retrieved_on: 2026-10-18
+verification:
+  last_verified: 2026-10-18
+  valid_until: 2027-01-16
+  verified_by: fixture
+curator_note: FAKE FIXTURE record for tests. Not a fact about any product.
