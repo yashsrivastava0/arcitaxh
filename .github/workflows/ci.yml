@@ -42,7 +42,11 @@ jobs:
       - run: pnpm test
 
       # 5. Parity (Node vs browser build): added in M11 (Playwright, Chromium only for this stage)
-      # 6. KB checks (pnpm kb:check): added in M3
+
+      # 6. KB checks: release checks on kb/, structure checks on kb/fixtures, generated schemas not hand-edited
+      - run: pnpm kb:check
+      - run: pnpm kb:schema:check
+
       # 7. Integration tests against real PostgreSQL (service container): added in M8
 
       # 8. Security and licence: dependency audit, secret scan, licence gate, notices current

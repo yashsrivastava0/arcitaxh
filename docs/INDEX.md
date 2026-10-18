@@ -4,7 +4,7 @@
 
 Registry of every document under `docs/` with frontmatter. Read this first, then open only the files you need. Sorted by `updated` (newest first) within each category.
 
-49 entries (46 documents, 3 source files).
+50 entries (47 documents, 3 source files).
 
 ## source
 
@@ -26,6 +26,7 @@ Canonical source documents. No frontmatter; read-only.
 
 | Title | Type | Status | Updated | Path |
 |---|---|---|---|---|
+| ADR-040: KB tooling, proposals and fixture isolation | decision | draft | 2026-10-19 | [04-decisions/0040-kb-tooling-and-fixture-isolation.md](./04-decisions/0040-kb-tooling-and-fixture-isolation.md) |
 | ADR-001: Closed source and paid | decision | draft | 2026-10-18 | [04-decisions/0001-closed-source-and-paid.md](./04-decisions/0001-closed-source-and-paid.md) |
 | ADR-002: Frontend and experience first; backend second | decision | draft | 2026-10-18 | [04-decisions/0002-frontend-and-experience-first-backend-second.md](./04-decisions/0002-frontend-and-experience-first-backend-second.md) |
 | ADR-003: AI-app architecture is the launch wedge | decision | draft | 2026-10-18 | [04-decisions/0003-ai-app-architecture-is-the-launch-wedge.md](./04-decisions/0003-ai-app-architecture-is-the-launch-wedge.md) |

@@ -37,7 +37,9 @@ Run from the repo root with pnpm (version in `package.json#packageManager`, Node
 | `pnpm check:boundaries` | Dependency-direction rules | M1 |
 | `pnpm licences:check` | Licence gate | M1 |
 | `pnpm test`, `pnpm test:core` | All tests / core only | M1 |
-| `pnpm kb:check`, `pnpm kb:build`, `pnpm kb:sweep` | KB release checks / bundle / list due and expired | M3 |
+| `pnpm kb:check`, `pnpm kb:sweep` | KB release checks (kb/ and kb/fixtures) / list records due or expired (changes nothing) | M3 |
+| `pnpm kb:build --dev` or `--version kb-YYYY.MM.N`, `pnpm kb:schema`, `pnpm kb:schema:check` | Build `dist/kb/<version>.json` / generate and verify `kb/schema/*.json` | M3 |
+| `pnpm kb:propose snapshot|draft|verify` | Curator helper: snapshot a vendor page, draft a PROPOSAL (never a record) | M3 |
 | `pnpm db:migrate` | Apply migrations (needs Postgres) | M8 |
 | `pnpm dev` | API + web in development (fake LLM client) | M9 |
 | `pnpm phase0:*` | Blind-test harness commands | M10 |

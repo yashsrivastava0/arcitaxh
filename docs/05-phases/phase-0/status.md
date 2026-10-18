@@ -30,12 +30,13 @@ Updated at the end of every session. Read this first when resuming.
 | M0 | Repo skeleton, docs system, agent config | done (acceptance checked 2026-10-18) |
 | M1 | Tooling, boundaries, licence gate, CI | done (acceptance checked 2026-10-18; workflow not yet run on GitHub) |
 | M2 | Core types, schemas, hashing | done (102 core tests; independent purity review found no violations; enforcement hardened, see ADR-037) |
-| M3 | KB package, loader, bundle, checks, fixtures | in progress: `packages/kb` release logic done (39 tests); tools, bundle reader, fixtures, decision type still to do |
-| M4-M11 | | not started |
+| M3 | KB package, loader, bundle, checks, fixtures | done except the four extra decision types, which wait for question 1 (acceptance checked: fixture KB passes; placeholder, missing quote, expired launch record, dangling reference and wrong TTL each fail `kb:check` in tests; fixtures cannot enter a bundle) |
+| M4 | Pipeline | next |
+| M5-M11 | | not started |
 
 ## Next
 
-Finish M3: KB bundle schema and pure bundle-backed `KBReader` in core; `tools/kb-check`, `kb-build`, `kb-propose`, `kb:sweep`; JSON Schema generation; `vector-store` decision type; fake fixture KB; CHANGELOG. Only `vector-store` is authored until question 1 is answered.
+M4: the six-stage pipeline (constraints, candidates, elimination, scoring, closeness, assembly) with golden tests on the fixture KB. Design notes for M4: array fields (`existingStack`, `mustHaves`) cannot be "unknown" in `ContextProfile`, so a required `existingStack` needs a rule for when it counts as missing; `deployTarget` and platform ids link a context to `option.platform`; the six dimension functions need the Assumption-tagged tables in `config/defaults/scoring.json`.
 
 ## Blockers and questions
 
