@@ -1,17 +1,15 @@
+import { builtinModules } from 'node:module';
 import js from '@eslint/js';
 import { defineConfig, globalIgnores } from 'eslint/config';
 import tseslint from 'typescript-eslint';
 
 // Dependency direction (brief 4.3). dependency-cruiser is the primary enforcement (pnpm check:boundaries);
 // these import restrictions are the second net, and they also enforce core purity (hard rule 3).
-const NODE_BUILTINS = [
-  'assert', 'buffer', 'child_process', 'cluster', 'crypto', 'dgram', 'dns', 'events', 'fs', 'http', 'http2', 'https',
-  'net', 'os', 'path', 'perf_hooks', 'process', 'readline', 'stream', 'timers', 'tls', 'url', 'util', 'vm', 'worker_threads', 'zlib',
-]; // prettier-ignore
-const nodeBuiltinPaths = NODE_BUILTINS.map((name) => ({
-  name,
-  message: 'packages/core performs no I/O (hard rule 3).',
-}));
+// Every Node built-in module, including subpaths such as fs/promises and path/posix, read from Node itself so the list
+// can never be incomplete. "node:"-prefixed specifiers are covered by a pattern.
+const NODE_BUILTINS = [...new Set(builtinModules.filter((name) => !name.startsWith('_') && !name.startsWith('node:')))];
+const nodeBuiltinPaths = (message) => NODE_BUILTINS.map((name) => ({ name, message }));
+const CORE_IO = 'packages/core performs no I/O (hard rule 3).';
 
 const restrict = (patterns, paths = []) => ({
   'no-restricted-imports': ['error', { patterns, paths }],
@@ -42,12 +40,12 @@ export default defineConfig([
   },
   // ---- packages/core: pure. No I/O, no clock, no randomness, no environment (hard rule 3). ----
   {
-    files: ['packages/core/src/**/*.ts'],
-    ignores: ['**/*.test.ts', 'packages/core/src/test/**'],
+    files: ['packages/core/src/**/*.{ts,tsx,mts,cts,js,mjs,cjs}'],
+    ignores: ['**/*.test.{ts,tsx,mts,cts,js,mjs,cjs}', 'packages/core/src/test/**'],
     rules: {
       ...restrict(
         [
-          { group: ['node:*'], message: 'packages/core performs no I/O (hard rule 3).' },
+          { group: ['node:*'], message: CORE_IO },
           ...forbidden(OTHER_PACKAGES, 'core imports nothing from other packages or apps (brief 4.3).'),
           ...forbidden(TOOLS, 'Nothing imports tools/.'),
           ...forbidden(VENDOR_SDKS, 'Only adapters call vendor SDKs.'),
@@ -55,8 +53,27 @@ export default defineConfig([
             ['hono', 'react', 'react-dom', 'drizzle-orm', 'pg', 'postgres'],
             'core has no framework or database dependency.',
           ),
+          // @noble/hashes: only the two entry points core uses. Its other entry points reach WebCrypto/randomness.
+          {
+            group: ['@noble/hashes/*', '!@noble/hashes/sha2.js', '!@noble/hashes/utils.js'],
+            message: 'core may import only @noble/hashes/sha2.js and @noble/hashes/utils.js (pure hashing).',
+          },
         ],
-        nodeBuiltinPaths,
+        [
+          ...nodeBuiltinPaths(CORE_IO),
+          {
+            // The bare package entry re-exports everything (including randomness). A gitignore-style pattern cannot
+            // exclude a parent and re-include its children, so the bare name is a path restriction.
+            name: '@noble/hashes',
+            message: 'core may import only @noble/hashes/sha2.js and @noble/hashes/utils.js (pure hashing).',
+          },
+          {
+            // utils.js also exports randomBytes, nextTick and asyncLoop: allow only the pure helpers.
+            name: '@noble/hashes/utils.js',
+            allowImportNames: ['bytesToHex', 'utf8ToBytes'],
+            message: 'core may use only bytesToHex and utf8ToBytes from @noble/hashes/utils.js (no randomness).',
+          },
+        ],
       ),
       'no-restricted-globals': [
         'error',
@@ -67,6 +84,7 @@ export default defineConfig([
           'setInterval',
           'clearTimeout',
           'clearInterval',
+          'queueMicrotask',
           'XMLHttpRequest',
           'localStorage',
           'sessionStorage',
@@ -75,6 +93,13 @@ export default defineConfig([
           'performance',
           'crypto',
           'console',
+          'globalThis',
+          'global',
+          'self',
+          'window',
+          'document',
+          'navigator',
+          'Intl',
         ].map((name) => ({
           name,
           message: 'Not allowed in packages/core: it performs no I/O and is deterministic (hard rule 3).',
@@ -85,9 +110,10 @@ export default defineConfig([
         { object: 'Date', property: 'now', message: 'Take time from the Clock port.' },
         { object: 'Math', property: 'random', message: 'No randomness in core. Ids come from the IdGenerator port.' },
         { object: 'performance', property: 'now', message: 'Take time from the Clock port.' },
-        { object: 'globalThis', property: 'crypto', message: 'No randomness or WebCrypto in core.' },
-        { object: 'Intl', property: 'DateTimeFormat', message: 'Locale-dependent output is not reproducible.' },
       ],
+      'no-eval': 'error',
+      'no-implied-eval': 'error',
+      'no-new-func': 'error',
       'no-restricted-syntax': [
         'error',
         {
@@ -95,12 +121,29 @@ export default defineConfig([
           message: 'new Date() reads the clock. Take time from the Clock port.',
         },
         {
+          selector: "NewExpression[callee.name='Date'] > SpreadElement",
+          message: 'new Date(...args) can read the clock. Pass explicit arguments.',
+        },
+        {
           selector: "CallExpression[callee.name='Date']",
           message: 'Date() reads the clock. Take time from the Clock port.',
         },
         {
-          selector: 'CallExpression[callee.property.name=/^toLocale/]',
-          message: 'Locale-dependent formatting is not reproducible.',
+          selector: "VariableDeclarator[init.name='Date'], AssignmentExpression[right.name='Date']",
+          message: 'Do not alias Date: it hides clock reads from review. Use new Date(arg) or Date.UTC directly.',
+        },
+        {
+          selector: "VariableDeclarator[init.name='Math'], AssignmentExpression[right.name='Math']",
+          message: 'Do not alias or destructure Math: it hides Math.random from review.',
+        },
+        {
+          selector:
+            'CallExpression[callee.property.name=/^toLocale/], CallExpression[callee.property.name="localeCompare"]',
+          message: 'Locale-dependent behaviour is not reproducible. Use compareStrings for ordering.',
+        },
+        {
+          selector: 'ImportExpression',
+          message: 'No dynamic import() in core: imports must be static and reviewable.',
         },
       ],
     },
@@ -172,10 +215,7 @@ export default defineConfig([
           'The web app never imports server-only modules.',
         ),
       ],
-      ['fs', 'path', 'http', 'https', 'net', 'os', 'child_process', 'crypto'].map((name) => ({
-        name,
-        message: 'The web app never imports server-only modules.',
-      })),
+      nodeBuiltinPaths('The web app never imports server-only modules.'),
     ),
   },
   // ---- apps/api: core, kb, llm, db. Not web, not tools. ----

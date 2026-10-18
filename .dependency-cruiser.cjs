@@ -10,7 +10,8 @@
  *
  * @type {import('dependency-cruiser').IConfiguration}
  */
-const NPM = ['npm', 'npm-dev', 'npm-optional', 'npm-peer', 'npm-unknown'];
+// Every way dependency-cruiser can classify a third-party import, including ones it cannot attribute to a package.json.
+const NPM = ['npm', 'npm-dev', 'npm-optional', 'npm-peer', 'npm-unknown', 'npm-no-pkg', 'npm-bundled'];
 const PACKAGE = (name) => `(^|/)node_modules/${name}(/|$)`;
 const VENDOR_SDKS = '(ai|@ai-sdk/[^/]+|@openrouter/[^/]+|openai|@anthropic-ai/[^/]+|@google/[^/]+)';
 const SERVER_ONLY = '(drizzle-orm|drizzle-kit|pg|postgres|hono|@hono/[^/]+)';
@@ -38,6 +39,29 @@ module.exports = {
       severity: 'error',
       from: CORE_SRC,
       to: { dependencyTypes: NPM, pathNot: [PACKAGE('zod'), PACKAGE('@noble/hashes')] },
+    },
+    {
+      name: 'core-noble-entry-points',
+      comment:
+        'packages/core may import only @noble/hashes/sha2.js and utils.js. Its other entry points reach WebCrypto or randomness.',
+      severity: 'error',
+      from: CORE_SRC,
+      to: { path: PACKAGE('@noble/hashes') + '.+', pathNot: '/(sha2|utils)\\.js$' },
+    },
+    {
+      name: 'core-no-test-code-in-production',
+      comment: 'Production core must not import test helpers (they pull in fast-check and read config files).',
+      severity: 'error',
+      from: CORE_SRC,
+      to: { path: '^packages/core/src/(test/|.*\\.test\\.ts$)' },
+    },
+    {
+      name: 'core-no-imports-outside-the-package',
+      comment:
+        'Production core imports only files inside packages/core (config JSON, scripts and other packages are out).',
+      severity: 'error',
+      from: CORE_SRC,
+      to: { dependencyTypes: ['local', 'aliased'], pathNot: '^packages/core/' },
     },
     {
       name: 'kb-may-import-core-only',
@@ -109,6 +133,14 @@ module.exports = {
       severity: 'error',
       from: { path: '^(packages|apps)/' },
       to: { path: '^tools/' },
+    },
+    {
+      name: 'not-to-unresolvable',
+      comment:
+        'Every import must resolve: an unresolved import could hide a forbidden dependency from the other rules.',
+      severity: 'error',
+      from: {},
+      to: { couldNotResolve: true },
     },
     {
       name: 'no-circular',
