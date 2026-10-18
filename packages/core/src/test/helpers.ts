@@ -5,6 +5,7 @@ import rulesJson from '../../../../config/defaults/rules.json';
 import type { KBReader } from '../ports';
 import type { ContextProfile } from '../schemas/context';
 import { emptyContextProfile } from '../schemas/context';
+import { emptyUsageInputs } from '../schemas/usage';
 import type { Component, DesignGraph, DesignLimits, Edge } from '../schemas/design';
 import type { DecisionTypeDef, KbRecord, OptionRecord, RecordType } from '../schemas/kb';
 import type { Constraints } from '../schemas/verdict';
@@ -46,6 +47,7 @@ export function profile(over: Partial<ContextProfile> = {}): ContextProfile {
 export function constraints(over: Partial<Constraints> = {}): Constraints {
   return {
     profile: profile(),
+    usage: emptyUsageInputs(),
     weights: {
       cost_fit: 1 / 6,
       scale_fit: 1 / 6,

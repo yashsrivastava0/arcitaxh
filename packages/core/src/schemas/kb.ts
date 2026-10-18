@@ -212,6 +212,8 @@ export type LimitRecord = Extract<KbRecord, { type: 'limit' }>;
 export type PriceRecord = Extract<KbRecord, { type: 'price' }>;
 export type CapabilityRecord = Extract<KbRecord, { type: 'capability' }>;
 export type LatencyProfileRecord = Extract<KbRecord, { type: 'latency_profile' }>;
+export type TradeoffRecord = Extract<KbRecord, { type: 'tradeoff' }>;
+export type FlipRecord = Extract<KbRecord, { type: 'flip' }>;
 
 /** A drafted record awaiting human review, as stored in kb/proposals/. Never loaded into a release. */
 export const kbProposalSchema = z.discriminatedUnion('type', [

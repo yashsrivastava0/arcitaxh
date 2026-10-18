@@ -9,6 +9,7 @@ import {
   TEXT_LIMITS,
 } from './common';
 import { contextFieldNameSchema, contextProfileSchema } from './context';
+import { usageInputsSchema } from './usage';
 
 export const DIMENSIONS = [
   'cost_fit',
@@ -144,6 +145,8 @@ export type Verdict = z.infer<typeof verdictSchema>;
 /** Constraints (Stage 1 output): the validated, normalised profile plus derived values. Weights sum to 1. */
 export const constraintsSchema = z.strictObject({
   profile: contextProfileSchema,
+  /** The user's usage figures (null = not given). Part of the verdict hash: the same context with other usage is another verdict. */
+  usage: usageInputsSchema,
   weights: z.strictObject({
     cost_fit: z.number().min(0).max(1),
     scale_fit: z.number().min(0).max(1),

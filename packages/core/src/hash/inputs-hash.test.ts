@@ -38,7 +38,7 @@ describe('inputsHash', () => {
 
   it('is stable: same inputs, byte-identical hash (golden value locks the canonical format; verified independently with Node crypto and a separate canonicaliser)', () => {
     expect(inputsHash(base())).toBe(inputsHash(base()));
-    expect(inputsHash(base())).toBe('2d521218f5fdece21793ce02f8e15e75f5181d7afc16d258808f089c5de546eb');
+    expect(inputsHash(base())).toBe('0c59c622bb0861f9c656b695473ba0953b7564c11d9ff5d21206fbd30903c821');
   });
 
   it('does not depend on key order or on the order of order-insensitive lists', () => {

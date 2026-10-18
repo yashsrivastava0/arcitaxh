@@ -93,6 +93,7 @@ export {
   recordTypeSchema,
   type CapabilityRecord,
   type DecisionTypeDef,
+  type FlipRecord,
   type KbProposal,
   type KbRecord,
   type LatencyProfileRecord,
@@ -102,6 +103,7 @@ export {
   type PriceRecord,
   type PriceUnit,
   type RecordType,
+  type TradeoffRecord,
 } from './schemas/kb';
 
 // configuration
@@ -157,3 +159,28 @@ export { addDays, dateOfTimestamp, daysBetween, isRealDate } from './util/date';
 export { BUNDLE_FORMAT, KB_VERSION_PATTERN, kbBundleSchema, parseBundle, type KbBundle } from './kb-bundle/bundle';
 export { createBundleReader } from './kb-bundle/reader';
 export { kbJsonSchemas } from './kb-bundle/json-schema';
+
+// freshness, usage inputs, conditions, calculators
+export { freshnessState, isCurrent, type FreshnessState } from './freshness';
+export { emptyUsageInputs, usageInputsSchema, type UsageInputs } from './schemas/usage';
+export { allTrue, evaluateCondition, notRuledOut } from './context/conditions';
+export { PICO_PER_MICRO, PICO_PER_UNIT, decimalToPico, formatPico, numberToPico, picoToMicro } from './calc/money';
+export {
+  assessFreeTier,
+  breakpoint,
+  formatMultiple,
+  growthFactor,
+  type FreeTierAssessment,
+  type LimitAssessment,
+} from './calc/free-tier';
+export { CALCULATOR_OUTPUTS, RULES_VERSION } from './versions';
+
+// the six-stage decision pipeline
+export {
+  runPipeline,
+  runPipelineDetailed,
+  type PipelineInputs,
+  type PipelineRun,
+  type PipelineTrace,
+} from './pipeline/run-pipeline';
+export { assumptionsFor, computeWeights, isMissing, userPlatforms } from './pipeline/stage1-constraints';

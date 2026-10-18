@@ -1,6 +1,4 @@
-import { addDays, daysBetween, type FreshnessConfig, type KbRecord } from '@product/core';
-
-export type FreshnessState = 'fresh' | 'due_soon' | 'expired';
+import { addDays, type FreshnessConfig, type KbRecord } from '@product/core';
 
 export type TtlKey = keyof FreshnessConfig['ttl_days'];
 
@@ -24,17 +22,4 @@ export function expectedValidUntil(record: KbRecord, cfg: FreshnessConfig): stri
   return ttl === null ? null : addDays(record.verification.last_verified, ttl);
 }
 
-/**
- * A record is fresh until its valid-until date (inclusive), due soon in the last `due_soon_days` days before it,
- * and expired after it (spec 8.4). `today` is a YYYY-MM-DD date taken from the Clock port.
- */
-export function freshnessState(
-  validUntil: string,
-  today: string,
-  cfg: Pick<FreshnessConfig, 'due_soon_days'>,
-): FreshnessState {
-  const left = daysBetween(today, validUntil);
-  if (left < 0) return 'expired';
-  if (left <= cfg.due_soon_days) return 'due_soon';
-  return 'fresh';
-}
+export { freshnessState, type FreshnessState } from '@product/core';
