@@ -31,12 +31,13 @@ Updated at the end of every session. Read this first when resuming.
 | M1 | Tooling, boundaries, licence gate, CI | done (acceptance checked 2026-10-18; workflow not yet run on GitHub) |
 | M2 | Core types, schemas, hashing | done (102 core tests; independent purity review found no violations; enforcement hardened, see ADR-037) |
 | M3 | KB package, loader, bundle, checks, fixtures | done except the four extra decision types, which wait for question 1 (acceptance checked: fixture KB passes; placeholder, missing quote, expired launch record, dangling reference and wrong TTL each fail `kb:check` in tests; fixtures cannot enter a bundle) |
-| M4 | Pipeline | next |
-| M5-M11 | | not started |
+| M4 | Six-stage pipeline with golden tests | done (acceptance checked: all three outcomes; E-1 to E-6; the deferral option; P9 incl. properties and a mutation check; partial score; byte-identical verdict and hash; per-dimension breakdown stored). See ADR-041 for the interpretations I made |
+| M5 | Rules R-01..R-07 and R-09, graph helpers, calculators | next |
+| M6-M11 | | not started |
 
 ## Next
 
-M4: the six-stage pipeline (constraints, candidates, elimination, scoring, closeness, assembly) with golden tests on the fixture KB. Design notes for M4: array fields (`existingStack`, `mustHaves`) cannot be "unknown" in `ContextProfile`, so a required `existingStack` needs a rule for when it counts as missing; `deployTarget` and platform ids link a context to `option.platform`; the six dimension functions need the Assumption-tagged tables in `config/defaults/scoring.json`.
+M5: graph helpers (adjacency, cycles, topological sort, articulation points by Tarjan, tested on cycles, disconnected graphs and a single node), rules R-01..R-07 and R-09 with at least two fixtures each, `security/redact`, and the calculators (cost per request and per month with exact money, the latency algorithm with p50/p95 and the "conservative upper bound" label, scale presets 1x/10x/100x, and the typed free-tier behaviours). Golden numbers to the last digit, property tests, and `RULES_VERSION` as the aggregate of rule versions.
 
 ## Blockers and questions
 
