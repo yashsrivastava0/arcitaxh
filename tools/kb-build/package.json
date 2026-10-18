@@ -1,0 +1,19 @@
+{
+  "name": "@product/tool-kb-build",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "description": "Builds dist/kb/<version>.json and generates kb/schema/*.json.",
+  "exports": {
+    ".": "./src/lib.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@product/core": "workspace:*",
+    "@product/kb": "workspace:*",
+    "@product/tool-kb-check": "workspace:*"
+  }
+}

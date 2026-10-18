@@ -1,0 +1,18 @@
+{
+  "name": "@product/tool-kb-check",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "description": "KB release checks (pnpm kb:check) and the expiry sweep (pnpm kb:sweep).",
+  "exports": {
+    ".": "./src/lib.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@product/core": "workspace:*",
+    "@product/kb": "workspace:*"
+  }
+}

@@ -23,7 +23,13 @@
     "notices:check": "tsx tools/notices/src/cli.ts --check",
     "secrets:scan": "tsx tools/secret-scan/src/cli.ts",
     "audit:prod": "pnpm audit --prod --audit-level high",
-    "ci": "pnpm typecheck && pnpm lint && pnpm check:boundaries && pnpm test:core && pnpm test && pnpm audit:prod && pnpm secrets:scan && pnpm licences:check && pnpm notices:check && pnpm docs:check"
+    "ci": "pnpm typecheck && pnpm lint && pnpm check:boundaries && pnpm test:core && pnpm test && pnpm kb:check && pnpm kb:schema:check && pnpm audit:prod && pnpm secrets:scan && pnpm licences:check && pnpm notices:check && pnpm docs:check",
+    "kb:check": "tsx tools/kb-check/src/cli.ts check && tsx tools/kb-check/src/cli.ts check --fixtures",
+    "kb:sweep": "tsx tools/kb-check/src/cli.ts sweep",
+    "kb:build": "tsx tools/kb-build/src/cli.ts build",
+    "kb:schema": "tsx tools/kb-build/src/cli.ts schema",
+    "kb:schema:check": "tsx tools/kb-build/src/cli.ts schema --check",
+    "kb:propose": "tsx tools/kb-propose/src/cli.ts"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
