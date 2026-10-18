@@ -196,7 +196,9 @@ describe('packages/core contains only plain TypeScript source', () => {
         const full = join(dir, name);
         return statSync(full).isDirectory() ? walk(full) : [full];
       });
-    const stray = walk(join(root, 'packages/core/src')).filter((f) => !f.endsWith('.ts'));
+    // src/test/ is exempt from the production rules and holds generated test data (fixture-bundle.json).
+    const testDir = join(root, 'packages/core/src/test');
+    const stray = walk(join(root, 'packages/core/src')).filter((f) => !f.endsWith('.ts') && !f.startsWith(testDir));
     expect(stray).toEqual([]);
   });
 });

@@ -8,3 +8,4 @@ docs
 *.md
 # Generated
 kb/schema
+packages/core/src/test/fixture-bundle.json

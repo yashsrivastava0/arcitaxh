@@ -47,17 +47,17 @@ describe('the real kb/ tree', () => {
 });
 
 describe('the fixture KB', () => {
-  it('passes in fixture mode: sound structure, 28 fake records, snapshots for every one', () => {
+  it('passes in fixture mode: sound structure, 32 fake records, snapshots for every one', () => {
     const r = runCheck({ kbRoot: FIXTURES, mode: 'fixture', today: TODAY, freshness: real });
     expect(r.errors).toEqual([]);
-    expect(r.tree.records).toHaveLength(28);
+    expect(r.tree.records).toHaveLength(32);
     expect(r.tree.decisionTypes.map((d) => d.def.id)).toEqual(['vector-store']);
   });
 
   it('is internally consistent: in release mode ONLY the fake-source guard objects (so a leak would be caught)', () => {
     const r = release(FIXTURES);
     expect(codes(r)).toEqual(['fake-source']);
-    expect(r.errors).toHaveLength(28);
+    expect(r.errors).toHaveLength(32);
     expect(r.due).toEqual([]);
   });
 });
@@ -128,7 +128,7 @@ describe('reports', () => {
     const text = formatReport(r, 'kb:check');
     expect(text).toContain('due for re-verification');
     expect(text).toContain('lat.managed-service-a.query.2026-10');
-    expect(text).toContain('FAILED: 28 error(s)');
+    expect(text).toContain('FAILED: 32 error(s)');
   });
 
   it('kb:sweep prints the review queue and says it changes nothing', () => {

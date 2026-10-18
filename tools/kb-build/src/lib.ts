@@ -3,7 +3,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { kbJsonSchemas, KB_VERSION_PATTERN, type KbBundle } from '@product/core';
 import { buildBundle } from '@product/kb';
-import { formatReport, isFixturePath, loadFreshness, runCheck } from '@product/tool-kb-check';
+import { formatReport, isFixturePath, loadFreshness, runCheck, todayUtc } from '@product/tool-kb-check';
 
 export interface BuildOptions {
   repoRoot: string;
@@ -87,4 +87,34 @@ export function staleSchemas(repoRoot: string): string[] {
       return !existsSync(p) || readFileSync(p, 'utf8').replace(/\r\n/g, '\n') !== f.text;
     })
     .map((f) => f.name);
+}
+
+// ---- packages/core/src/test/fixture-bundle.json: the fake fixture KB as a bundle, for tests that cannot read files ----
+
+export const FIXTURE_BUNDLE_PATH = 'packages/core/src/test/fixture-bundle.json';
+
+/**
+ * The fixture KB (kb/fixtures) as a bundle. It is for tests only: it is never written under dist/, never named like a
+ * release, and carries no commit so it is byte-stable. Throws if the fixture KB does not pass its structural checks.
+ */
+export function fixtureBundleText(repoRoot: string): string {
+  const report = runCheck({
+    kbRoot: join(repoRoot, 'kb/fixtures'),
+    mode: 'fixture',
+    today: todayUtc(),
+    freshness: loadFreshness(repoRoot),
+  });
+  if (report.errors.length > 0) throw new Error('the fixture KB is invalid:\n' + formatReport(report, 'kb:check'));
+  return JSON.stringify(buildBundle(report.tree, { version: 'kb-dev', commit: null }), null, 2) + '\n';
+}
+
+export function writeFixtureBundle(repoRoot: string): string {
+  const path = join(repoRoot, FIXTURE_BUNDLE_PATH);
+  writeFileSync(path, fixtureBundleText(repoRoot), 'utf8');
+  return FIXTURE_BUNDLE_PATH;
+}
+
+export function staleFixtureBundle(repoRoot: string): boolean {
+  const path = join(repoRoot, FIXTURE_BUNDLE_PATH);
+  return !existsSync(path) || readFileSync(path, 'utf8').replace(/\r\n/g, '\n') !== fixtureBundleText(repoRoot);
 }

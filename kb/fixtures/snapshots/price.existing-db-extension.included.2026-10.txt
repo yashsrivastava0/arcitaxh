@@ -1,0 +1,6 @@
+URL: https://vendor.example/existing-db-extension/price
+Retrieved: 2026-10-18
+---
+FAKE FIXTURE PAGE (not a real vendor page)
+FAKE FIXTURE: the existing-db-extension adds 0 USD per month to your database bill.
+This text exists only so the quote check has something to verify against.

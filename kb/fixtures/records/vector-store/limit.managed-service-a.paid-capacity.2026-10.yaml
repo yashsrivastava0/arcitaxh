@@ -1,0 +1,22 @@
+id: limit.managed-service-a.paid-capacity.2026-10
+type: limit
+decision_type: vector-store
+subject: option.managed-service-a
+body:
+  scope: paid_tier:standard
+  metric: stored_vectors
+  value: 5000000
+  unit: vectors
+  period: none
+  overage_behaviour: hard_stop
+  pauses_after_inactivity: false
+  scales_to_zero: false
+source:
+  url: https://vendor.example/managed-service-a/limit
+  quote: 'FAKE FIXTURE: the standard plan of managed-service-a stores up to 5,000,000 vectors.'
+  retrieved_on: 2026-10-18
+verification:
+  last_verified: 2026-10-18
+  valid_until: 2026-11-17
+  verified_by: fixture
+curator_note: FAKE FIXTURE record for tests. Not a fact about any product.

@@ -2,7 +2,14 @@
 // pnpm kb:schema [--check]
 import { isRealDate } from '@product/core';
 import { findRepoRoot, todayUtc } from '@product/tool-kb-check';
-import { buildRelease, staleSchemas, writeSchemas } from './lib';
+import {
+  buildRelease,
+  FIXTURE_BUNDLE_PATH,
+  staleFixtureBundle,
+  staleSchemas,
+  writeFixtureBundle,
+  writeSchemas,
+} from './lib';
 
 const [command, ...args] = process.argv.slice(2);
 const repoRoot = findRepoRoot(import.meta.url);
@@ -40,16 +47,16 @@ if (command === 'build') {
   );
 } else if (command === 'schema') {
   if (args.includes('--check')) {
-    const stale = staleSchemas(repoRoot);
+    const stale = [...staleSchemas(repoRoot), ...(staleFixtureBundle(repoRoot) ? [FIXTURE_BUNDLE_PATH] : [])];
     if (stale.length > 0) {
       console.error(
-        `kb/schema is out of date or hand-edited: ${stale.join(', ')}. Run \`pnpm kb:schema\` and commit the result.`,
+        `generated KB files are out of date or hand-edited: ${stale.join(', ')}. Run \`pnpm kb:schema\` and commit the result.`,
       );
       process.exit(1);
     }
     console.log('kb:schema ok');
   } else {
-    console.log(`kb:schema wrote ${writeSchemas(repoRoot).join(', ')}`);
+    console.log(`kb:schema wrote ${[...writeSchemas(repoRoot), writeFixtureBundle(repoRoot)].join(', ')}`);
   }
 } else {
   console.error('usage: kb-build <build ... | schema [--check]>');

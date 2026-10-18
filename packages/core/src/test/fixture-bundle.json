@@ -1,0 +1,976 @@
+{
+  "bundleFormat": 1,
+  "version": "kb-dev",
+  "commit": null,
+  "decisionTypes": [
+    {
+      "id": "vector-store",
+      "title": "Vector store (fake fixture)",
+      "summary": "FAKE FIXTURE decision type for tests: where embeddings are stored and searched.",
+      "launch": true,
+      "palette_types": [
+        "vector_store"
+      ],
+      "required_context": [
+        {
+          "field": "usersNow",
+          "question": "About how many users do you have now?"
+        },
+        {
+          "field": "budget",
+          "question": "Are you limited to free tiers, or can you pay?"
+        },
+        {
+          "field": "existingStack",
+          "question": "Which database are you already using?"
+        }
+      ],
+      "elimination": [
+        "E-1",
+        "E-2",
+        "E-3",
+        "E-4",
+        "E-5",
+        "E-6"
+      ],
+      "design_rules": [
+        "R-05",
+        "R-07"
+      ],
+      "deferral_option": "option.existing-db-extension",
+      "applies_when": []
+    }
+  ],
+  "records": [
+    {
+      "id": "anti.read-heavy-no-cache.2026-10",
+      "type": "antipattern",
+      "decision_type": "vector-store",
+      "subject": "option.managed-service-a",
+      "body": {
+        "rule_id": "R-05",
+        "description": "A read-heavy path with no cache sends every query to the vector store."
+      },
+      "source": {
+        "url": "https://vendor.example/managed-service-a/antipattern",
+        "quote": "FAKE FIXTURE: a read-heavy path with no cache sends every query to the store.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2027-01-16",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "cap.existing-db-extension.deploy-target-platform-fake-edge.2026-10",
+      "type": "capability",
+      "decision_type": "vector-store",
+      "subject": "option.existing-db-extension",
+      "body": {
+        "capability_id": "deploy_target.platform.fake-edge",
+        "support": "no",
+        "notes": ""
+      },
+      "source": {
+        "url": "https://vendor.example/existing-db-extension/capability",
+        "quote": "FAKE FIXTURE: existing-db-extension does not support deploy_target.platform.fake-edge.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2027-01-16",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "cap.existing-db-extension.eu-data-residency.2026-10",
+      "type": "capability",
+      "decision_type": "vector-store",
+      "subject": "option.existing-db-extension",
+      "body": {
+        "capability_id": "eu_data_residency",
+        "support": "yes",
+        "notes": ""
+      },
+      "source": {
+        "url": "https://vendor.example/existing-db-extension/capability",
+        "quote": "FAKE FIXTURE: existing-db-extension supports eu_data_residency.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2027-01-16",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "cap.existing-db-extension.hybrid-search.2026-10",
+      "type": "capability",
+      "decision_type": "vector-store",
+      "subject": "option.existing-db-extension",
+      "body": {
+        "capability_id": "hybrid_search",
+        "support": "partial",
+        "notes": "Keyword and vector search are separate queries."
+      },
+      "source": {
+        "url": "https://vendor.example/existing-db-extension/capability",
+        "quote": "FAKE FIXTURE: existing-db-extension partly supports hybrid_search.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2027-01-16",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "cap.managed-service-a.deploy-target-platform-fake-edge.2026-10",
+      "type": "capability",
+      "decision_type": "vector-store",
+      "subject": "option.managed-service-a",
+      "body": {
+        "capability_id": "deploy_target.platform.fake-edge",
+        "support": "yes",
+        "notes": ""
+      },
+      "source": {
+        "url": "https://vendor.example/managed-service-a/capability",
+        "quote": "FAKE FIXTURE: managed-service-a supports deploy_target.platform.fake-edge.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2027-01-16",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "cap.managed-service-a.eu-data-residency.2026-10",
+      "type": "capability",
+      "decision_type": "vector-store",
+      "subject": "option.managed-service-a",
+      "body": {
+        "capability_id": "eu_data_residency",
+        "support": "no",
+        "notes": ""
+      },
+      "source": {
+        "url": "https://vendor.example/managed-service-a/capability",
+        "quote": "FAKE FIXTURE: managed-service-a does not support eu_data_residency.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2027-01-16",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "cap.managed-service-a.hybrid-search.2026-10",
+      "type": "capability",
+      "decision_type": "vector-store",
+      "subject": "option.managed-service-a",
+      "body": {
+        "capability_id": "hybrid_search",
+        "support": "yes",
+        "notes": ""
+      },
+      "source": {
+        "url": "https://vendor.example/managed-service-a/capability",
+        "quote": "FAKE FIXTURE: managed-service-a supports hybrid_search.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2027-01-16",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "cap.managed-service-b.eu-data-residency.2026-10",
+      "type": "capability",
+      "decision_type": "vector-store",
+      "subject": "option.managed-service-b",
+      "body": {
+        "capability_id": "eu_data_residency",
+        "support": "yes",
+        "notes": ""
+      },
+      "source": {
+        "url": "https://vendor.example/managed-service-b/capability",
+        "quote": "FAKE FIXTURE: managed-service-b supports eu_data_residency.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2027-01-16",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "cap.managed-service-b.hybrid-search.2026-10",
+      "type": "capability",
+      "decision_type": "vector-store",
+      "subject": "option.managed-service-b",
+      "body": {
+        "capability_id": "hybrid_search",
+        "support": "no",
+        "notes": ""
+      },
+      "source": {
+        "url": "https://vendor.example/managed-service-b/capability",
+        "quote": "FAKE FIXTURE: managed-service-b does not support hybrid_search.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2027-01-16",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "cap.self-hosted-c.eu-data-residency.2026-10",
+      "type": "capability",
+      "decision_type": "vector-store",
+      "subject": "option.self-hosted-c",
+      "body": {
+        "capability_id": "eu_data_residency",
+        "support": "yes",
+        "notes": ""
+      },
+      "source": {
+        "url": "https://vendor.example/self-hosted-c/capability",
+        "quote": "FAKE FIXTURE: self-hosted-c supports eu_data_residency.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2027-01-16",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "cap.self-hosted-c.hybrid-search.2026-10",
+      "type": "capability",
+      "decision_type": "vector-store",
+      "subject": "option.self-hosted-c",
+      "body": {
+        "capability_id": "hybrid_search",
+        "support": "yes",
+        "notes": ""
+      },
+      "source": {
+        "url": "https://vendor.example/self-hosted-c/capability",
+        "quote": "FAKE FIXTURE: self-hosted-c supports hybrid_search.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2027-01-16",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "flip.existing-db-extension.scale.2026-10",
+      "type": "flip",
+      "decision_type": "vector-store",
+      "subject": "option.existing-db-extension",
+      "body": {
+        "condition": {
+          "field": "usersIn12Months",
+          "op": "gte",
+          "value": 100000
+        },
+        "explanation": "Switch to a dedicated service when your user count grows past the point where the shared database becomes the bottleneck."
+      },
+      "source": {
+        "url": "https://vendor.example/existing-db-extension/flip",
+        "quote": "FAKE FIXTURE: beyond 100,000 users a dedicated service is usually worth its extra operations.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2027-01-16",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "guide.keep-it-simple.2026-10",
+      "type": "guidance",
+      "decision_type": "vector-store",
+      "subject": "option.existing-db-extension",
+      "body": {
+        "source_document": "Fake architecture guide",
+        "licence": "CC BY 4.0",
+        "paraphrase": "Add complexity only when the data says you need it.",
+        "grounded_in": "https://vendor.example/guide/keep-it-simple"
+      },
+      "source": {
+        "url": "https://vendor.example/guide/keep-it-simple",
+        "quote": "FAKE FIXTURE: add complexity only when the data says you need it.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2027-04-16",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "lat.existing-db-extension.query.2026-10",
+      "type": "latency_profile",
+      "decision_type": "vector-store",
+      "subject": "option.existing-db-extension",
+      "body": {
+        "operation": "nearest_neighbour_query",
+        "region": "eu-example-1",
+        "p50_ms": 20,
+        "p95_ms": 60,
+        "basis": "first_party_measured",
+        "measured_on": "2026-10-18",
+        "sample_conditions": "FAKE FIXTURE sample"
+      },
+      "source": {
+        "url": "https://vendor.example/existing-db-extension/latency_profile",
+        "quote": "FAKE FIXTURE: existing-db-extension answers a nearest-neighbour query in a median of 20 ms and 95 percent within 60 ms.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2026-11-01",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "lat.managed-service-a.query.2026-10",
+      "type": "latency_profile",
+      "decision_type": "vector-store",
+      "subject": "option.managed-service-a",
+      "body": {
+        "operation": "nearest_neighbour_query",
+        "region": "eu-example-1",
+        "p50_ms": 12,
+        "p95_ms": 40,
+        "basis": "first_party_measured",
+        "measured_on": "2026-10-18",
+        "sample_conditions": "FAKE FIXTURE sample"
+      },
+      "source": {
+        "url": "https://vendor.example/managed-service-a/latency_profile",
+        "quote": "FAKE FIXTURE: managed-service-a answers a nearest-neighbour query in a median of 12 ms and 95 percent within 40 ms.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2026-11-01",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "lat.managed-service-b.query.2026-10",
+      "type": "latency_profile",
+      "decision_type": "vector-store",
+      "subject": "option.managed-service-b",
+      "body": {
+        "operation": "nearest_neighbour_query",
+        "region": "eu-example-1",
+        "p50_ms": 18,
+        "p95_ms": 55,
+        "basis": "first_party_measured",
+        "measured_on": "2026-10-18",
+        "sample_conditions": "FAKE FIXTURE sample"
+      },
+      "source": {
+        "url": "https://vendor.example/managed-service-b/latency_profile",
+        "quote": "FAKE FIXTURE: managed-service-b answers a nearest-neighbour query in a median of 18 ms and 95 percent within 55 ms.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2026-11-01",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "lat.self-hosted-c.query.2026-10",
+      "type": "latency_profile",
+      "decision_type": "vector-store",
+      "subject": "option.self-hosted-c",
+      "body": {
+        "operation": "nearest_neighbour_query",
+        "region": "eu-example-1",
+        "p50_ms": 15,
+        "p95_ms": 45,
+        "basis": "first_party_measured",
+        "measured_on": "2026-10-18",
+        "sample_conditions": "FAKE FIXTURE sample"
+      },
+      "source": {
+        "url": "https://vendor.example/self-hosted-c/latency_profile",
+        "quote": "FAKE FIXTURE: self-hosted-c answers a nearest-neighbour query in a median of 15 ms and 95 percent within 45 ms.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2026-11-01",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "limit.existing-db-extension.capacity.2026-10",
+      "type": "limit",
+      "decision_type": "vector-store",
+      "subject": "option.existing-db-extension",
+      "body": {
+        "scope": "capacity",
+        "metric": "stored_vectors",
+        "value": 5000000,
+        "unit": "vectors",
+        "period": "none",
+        "overage_behaviour": "hard_stop",
+        "pauses_after_inactivity": false,
+        "scales_to_zero": false
+      },
+      "source": {
+        "url": "https://vendor.example/existing-db-extension/limit",
+        "quote": "FAKE FIXTURE: the existing-db-extension handles up to 5,000,000 stored vectors before it needs a larger instance.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2026-11-17",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "limit.managed-service-a.free-tier.2026-10",
+      "type": "limit",
+      "decision_type": "vector-store",
+      "subject": "option.managed-service-a",
+      "body": {
+        "scope": "free_tier",
+        "metric": "stored_vectors",
+        "value": 50000,
+        "unit": "vectors",
+        "period": "none",
+        "overage_behaviour": "hard_stop",
+        "pauses_after_inactivity": false,
+        "scales_to_zero": false
+      },
+      "source": {
+        "url": "https://vendor.example/managed-service-a/limit",
+        "quote": "FAKE FIXTURE: the free tier of managed-service-a stores up to 50,000 vectors and then stops accepting writes.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2026-11-17",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "limit.managed-service-a.paid-capacity.2026-10",
+      "type": "limit",
+      "decision_type": "vector-store",
+      "subject": "option.managed-service-a",
+      "body": {
+        "scope": "paid_tier:standard",
+        "metric": "stored_vectors",
+        "value": 5000000,
+        "unit": "vectors",
+        "period": "none",
+        "overage_behaviour": "hard_stop",
+        "pauses_after_inactivity": false,
+        "scales_to_zero": false
+      },
+      "source": {
+        "url": "https://vendor.example/managed-service-a/limit",
+        "quote": "FAKE FIXTURE: the standard plan of managed-service-a stores up to 5,000,000 vectors.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2026-11-17",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "limit.managed-service-a.rate.2026-10",
+      "type": "limit",
+      "decision_type": "vector-store",
+      "subject": "option.managed-service-a",
+      "body": {
+        "scope": "rate_limit",
+        "metric": "queries_per_second",
+        "value": 10,
+        "unit": "queries",
+        "period": "second",
+        "overage_behaviour": "throttled",
+        "pauses_after_inactivity": false,
+        "scales_to_zero": false
+      },
+      "source": {
+        "url": "https://vendor.example/managed-service-a/limit",
+        "quote": "FAKE FIXTURE: managed-service-a allows 10 queries per second and throttles requests beyond that.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2026-11-17",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "limit.managed-service-b.free-tier.2026-10",
+      "type": "limit",
+      "decision_type": "vector-store",
+      "subject": "option.managed-service-b",
+      "body": {
+        "scope": "free_tier",
+        "metric": "stored_vectors",
+        "value": 1000000,
+        "unit": "vectors",
+        "period": "none",
+        "overage_behaviour": "overage_billed",
+        "pauses_after_inactivity": true,
+        "scales_to_zero": false
+      },
+      "source": {
+        "url": "https://vendor.example/managed-service-b/limit",
+        "quote": "FAKE FIXTURE: the free tier of managed-service-b stores up to 1,000,000 vectors and pauses after a week of inactivity.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2026-11-17",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "limit.self-hosted-c.capacity.2026-10",
+      "type": "limit",
+      "decision_type": "vector-store",
+      "subject": "option.self-hosted-c",
+      "body": {
+        "scope": "capacity",
+        "metric": "stored_vectors",
+        "value": 100000000,
+        "unit": "vectors",
+        "period": "none",
+        "overage_behaviour": "hard_stop",
+        "pauses_after_inactivity": false,
+        "scales_to_zero": false
+      },
+      "source": {
+        "url": "https://vendor.example/self-hosted-c/limit",
+        "quote": "FAKE FIXTURE: a self-hosted-c cluster on the recommended node stores up to 100,000,000 vectors.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2026-11-17",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "option.existing-db-extension",
+      "type": "option",
+      "decision_type": "vector-store",
+      "subject": "option.existing-db-extension",
+      "body": {
+        "name": "Existing-database extension (fake)",
+        "vendor": "vendor.example",
+        "categories": [
+          "vector-store"
+        ],
+        "platform": "platform.fake-db",
+        "deployment": "both",
+        "regions": [
+          "eu-example-1",
+          "us-example-1"
+        ],
+        "licence": "FAKE-LICENCE",
+        "status": "generally_available",
+        "migration_effort": "low",
+        "ops_burden": "low",
+        "applies_when": [],
+        "why_pick": [
+          {
+            "text": "You already run a database that offers vector search, so there is nothing new to operate.",
+            "applies_when": [
+              {
+                "field": "existingStack",
+                "op": "includes",
+                "value": "option.fake-primary-db"
+              }
+            ]
+          },
+          {
+            "text": "For a small corpus this is usually enough, and it avoids a second service.",
+            "applies_when": [
+              {
+                "field": "usersNow",
+                "op": "lte",
+                "value": 1000
+              }
+            ]
+          }
+        ],
+        "why_not": [
+          {
+            "text": "Heavy vector workloads compete with the rest of the database for resources.",
+            "applies_when": [
+              {
+                "field": "usersIn12Months",
+                "op": "gte",
+                "value": 100000
+              }
+            ]
+          }
+        ]
+      },
+      "source": {
+        "url": "https://vendor.example/existing-db-extension/option",
+        "quote": "FAKE FIXTURE: Existing-database extension (fake) is a both vector store.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2027-01-16",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "option.managed-service-a",
+      "type": "option",
+      "decision_type": "vector-store",
+      "subject": "option.managed-service-a",
+      "body": {
+        "name": "Managed Service A (fake)",
+        "vendor": "vendor.example",
+        "categories": [
+          "vector-store"
+        ],
+        "platform": "platform.fake-cloud-a",
+        "deployment": "managed",
+        "regions": [
+          "us-example-1"
+        ],
+        "licence": null,
+        "status": "generally_available",
+        "migration_effort": "medium",
+        "ops_burden": "low",
+        "applies_when": [],
+        "why_pick": [
+          {
+            "text": "A fully managed service means no operations work for the team.",
+            "applies_when": [
+              {
+                "field": "team.size",
+                "op": "eq",
+                "value": "solo"
+              }
+            ]
+          }
+        ],
+        "why_not": [
+          {
+            "text": "It has no EU hosting, so it cannot meet an EU data-residency requirement.",
+            "applies_when": [
+              {
+                "field": "mustHaves",
+                "op": "includes",
+                "value": "eu_data_residency"
+              }
+            ]
+          }
+        ]
+      },
+      "source": {
+        "url": "https://vendor.example/managed-service-a/option",
+        "quote": "FAKE FIXTURE: Managed Service A (fake) is a managed vector store.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2027-01-16",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "option.managed-service-b",
+      "type": "option",
+      "decision_type": "vector-store",
+      "subject": "option.managed-service-b",
+      "body": {
+        "name": "Managed Service B (fake)",
+        "vendor": "vendor.example",
+        "categories": [
+          "vector-store"
+        ],
+        "platform": null,
+        "deployment": "managed",
+        "regions": [
+          "eu-example-1"
+        ],
+        "licence": null,
+        "status": "generally_available",
+        "migration_effort": "medium",
+        "ops_burden": "low",
+        "applies_when": [],
+        "why_pick": [
+          {
+            "text": "It offers a generous free tier, which suits a free-tiers-only budget.",
+            "applies_when": [
+              {
+                "field": "budget",
+                "op": "eq",
+                "value": "free_only"
+              }
+            ]
+          }
+        ],
+        "why_not": [
+          {
+            "text": "It has no hybrid search, so it cannot serve a hybrid-search must-have.",
+            "applies_when": [
+              {
+                "field": "mustHaves",
+                "op": "includes",
+                "value": "requires_capability"
+              }
+            ]
+          }
+        ]
+      },
+      "source": {
+        "url": "https://vendor.example/managed-service-b/option",
+        "quote": "FAKE FIXTURE: Managed Service B (fake) is a managed vector store.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2027-01-16",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "option.self-hosted-c",
+      "type": "option",
+      "decision_type": "vector-store",
+      "subject": "option.self-hosted-c",
+      "body": {
+        "name": "Self-hosted C (fake)",
+        "vendor": "vendor.example",
+        "categories": [
+          "vector-store"
+        ],
+        "platform": null,
+        "deployment": "self_hosted",
+        "regions": [
+          "eu-example-1",
+          "us-example-1"
+        ],
+        "licence": "FAKE-LICENCE",
+        "status": "generally_available",
+        "migration_effort": "high",
+        "ops_burden": "high",
+        "applies_when": [],
+        "why_pick": [
+          {
+            "text": "You control the data and the infrastructure, which helps when strict residency matters.",
+            "applies_when": [
+              {
+                "field": "mustHaves",
+                "op": "includes",
+                "value": "eu_data_residency"
+              }
+            ]
+          }
+        ],
+        "why_not": [
+          {
+            "text": "Running it yourself is real operational work, which is hard for a small team.",
+            "applies_when": [
+              {
+                "field": "team.size",
+                "op": "eq",
+                "value": "solo"
+              }
+            ]
+          }
+        ]
+      },
+      "source": {
+        "url": "https://vendor.example/self-hosted-c/option",
+        "quote": "FAKE FIXTURE: Self-hosted C (fake) is a self-hosted vector store.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2027-01-16",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "price.existing-db-extension.included.2026-10",
+      "type": "price",
+      "decision_type": "vector-store",
+      "subject": "option.existing-db-extension",
+      "body": {
+        "currency": "USD",
+        "unit": "fixed_per_month",
+        "unit_name": null,
+        "amount": "0",
+        "tier": "included",
+        "billing_period": "month",
+        "includes": "Included in your existing database"
+      },
+      "source": {
+        "url": "https://vendor.example/existing-db-extension/price",
+        "quote": "FAKE FIXTURE: the existing-db-extension adds 0 USD per month to your database bill.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2026-11-17",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "price.managed-service-a.standard.2026-10",
+      "type": "price",
+      "decision_type": "vector-store",
+      "subject": "option.managed-service-a",
+      "body": {
+        "currency": "USD",
+        "unit": "fixed_per_month",
+        "unit_name": null,
+        "amount": "25",
+        "tier": "standard",
+        "billing_period": "month",
+        "includes": "Up to 5,000,000 stored vectors"
+      },
+      "source": {
+        "url": "https://vendor.example/managed-service-a/price",
+        "quote": "FAKE FIXTURE: the standard plan of managed-service-a costs 25 USD per month.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2026-11-17",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "price.managed-service-b.paid.2026-10",
+      "type": "price",
+      "decision_type": "vector-store",
+      "subject": "option.managed-service-b",
+      "body": {
+        "currency": "USD",
+        "unit": "per_unit",
+        "unit_name": "million_stored_vectors_month",
+        "amount": "2.50",
+        "tier": "paid",
+        "billing_period": "month",
+        "includes": ""
+      },
+      "source": {
+        "url": "https://vendor.example/managed-service-b/price",
+        "quote": "FAKE FIXTURE: managed-service-b charges 2.50 USD per million stored vectors per month beyond the free tier.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2026-11-17",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "price.self-hosted-c.node.2026-10",
+      "type": "price",
+      "decision_type": "vector-store",
+      "subject": "option.self-hosted-c",
+      "body": {
+        "currency": "USD",
+        "unit": "fixed_per_month",
+        "unit_name": null,
+        "amount": "40",
+        "tier": "small-node",
+        "billing_period": "month",
+        "includes": ""
+      },
+      "source": {
+        "url": "https://vendor.example/self-hosted-c/price",
+        "quote": "FAKE FIXTURE: the recommended small node for self-hosted-c costs 40 USD per month.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2026-11-17",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    },
+    {
+      "id": "tradeoff.existing-db-extension.second-service.2026-10",
+      "type": "tradeoff",
+      "decision_type": "vector-store",
+      "subject": "option.existing-db-extension",
+      "body": {
+        "sentence": "Using the existing database avoids a second service, but vector queries share its resources.",
+        "applies_when": [
+          {
+            "field": "budget",
+            "op": "eq",
+            "value": "free_only"
+          }
+        ]
+      },
+      "source": {
+        "url": "https://vendor.example/existing-db-extension/tradeoff",
+        "quote": "FAKE FIXTURE: using the existing database avoids a second service but shares its resources.",
+        "retrieved_on": "2026-10-18"
+      },
+      "verification": {
+        "last_verified": "2026-10-18",
+        "valid_until": "2027-01-16",
+        "verified_by": "fixture"
+      },
+      "curator_note": "FAKE FIXTURE record for tests. Not a fact about any product."
+    }
+  ]
+}
