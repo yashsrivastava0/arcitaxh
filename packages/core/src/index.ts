@@ -110,12 +110,19 @@ export {
   FOUNDER_TO_SET,
   MULTIPLIER_CONDITIONS,
   ROSTER_ROLES,
+  costConfigSchema,
+  debateConfigSchema,
   defaultsSchema,
+  finalistsConfigSchema,
+  freshnessConfigSchema,
   parseDefaults,
   phase0ConfigSchema,
   phase0MissingInputs,
+  retentionConfigSchema,
   rosterPlaceholders,
   rosterSchema,
+  rulesConfigSchema,
+  scoringConfigSchema,
   type CostConfig,
   type DebateConfig,
   type Defaults,
@@ -145,3 +152,8 @@ export { HASH_FORMAT_VERSION, designHash, inputsHash, type HashInputs } from './
 
 // dates
 export { addDays, dateOfTimestamp, daysBetween, isRealDate } from './util/date';
+
+// knowledge-base release bundle (conflict C-010: pure, so the API and the browser calculator share it)
+export { BUNDLE_FORMAT, KB_VERSION_PATTERN, kbBundleSchema, parseBundle, type KbBundle } from './kb-bundle/bundle';
+export { createBundleReader } from './kb-bundle/reader';
+export { kbJsonSchemas } from './kb-bundle/json-schema';
