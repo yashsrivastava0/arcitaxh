@@ -26,3 +26,4 @@ export {
   type SourceFile,
 } from './parse';
 export { collapseWhitespace, numbersInBody, numbersInText, quoteAppearsIn } from './text';
+export { buildBundle } from './bundle';
