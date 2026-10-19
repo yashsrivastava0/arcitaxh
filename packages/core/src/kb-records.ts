@@ -1,5 +1,5 @@
-import { freshnessState, isCurrent, type FreshnessState } from '../freshness';
-import type { KBReader } from '../ports';
+import { freshnessState, isCurrent, type FreshnessState } from './freshness';
+import type { KBReader } from './ports';
 import type {
   CapabilityRecord,
   FlipRecord,
@@ -9,7 +9,7 @@ import type {
   OptionRecord,
   PriceRecord,
   TradeoffRecord,
-} from '../schemas/kb';
+} from './schemas/kb';
 
 /** What every stage needs to judge a record's freshness: today's date and the due-soon window. */
 export interface FreshnessContext {

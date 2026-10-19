@@ -107,6 +107,105 @@ export function optionRecord(
   };
 }
 
+type Body<T extends RecordType> = Extract<KbRecord, { type: T }>['body'];
+
+/** A fake record of any type. `verification` defaults to fresh on 2026-10-20 (valid until 2026-11-17). */
+function fakeRecord<T extends RecordType>(
+  type: T,
+  id: string,
+  subject: string,
+  body: Body<T>,
+  verification: { last_verified: string; valid_until: string; verified_by: string } = FAKE_VERIFICATION,
+): Extract<KbRecord, { type: T }> {
+  return {
+    id,
+    type,
+    decision_type: 'vector-store',
+    subject,
+    body,
+    source: FAKE_SOURCE,
+    verification,
+    curator_note: '',
+  } as unknown as Extract<KbRecord, { type: T }>;
+}
+
+export const EXPIRED = { last_verified: '2026-01-01', valid_until: '2026-02-01', verified_by: 'test' };
+
+export function latencyRecord(
+  id: string,
+  subject: string,
+  p50: number,
+  p95: number,
+  over: Partial<Body<'latency_profile'>> = {},
+  verification?: typeof FAKE_VERIFICATION,
+) {
+  return fakeRecord(
+    'latency_profile',
+    id,
+    subject,
+    {
+      operation: 'query',
+      region: 'eu-example-1',
+      p50_ms: p50,
+      p95_ms: p95,
+      basis: 'first_party_measured',
+      measured_on: '2026-10-18',
+      sample_conditions: 'fake',
+      ...over,
+    },
+    verification,
+  );
+}
+
+export function limitRecord(
+  id: string,
+  subject: string,
+  over: Partial<Body<'limit'>> = {},
+  verification?: typeof FAKE_VERIFICATION,
+) {
+  return fakeRecord(
+    'limit',
+    id,
+    subject,
+    {
+      scope: 'free_tier',
+      metric: 'stored_vectors',
+      value: 10_000,
+      unit: 'vectors',
+      period: 'none',
+      overage_behaviour: 'hard_stop',
+      pauses_after_inactivity: false,
+      scales_to_zero: false,
+      ...over,
+    },
+    verification,
+  );
+}
+
+export function priceRecord(
+  id: string,
+  subject: string,
+  over: Partial<Body<'price'>> = {},
+  verification?: typeof FAKE_VERIFICATION,
+) {
+  return fakeRecord(
+    'price',
+    id,
+    subject,
+    {
+      currency: 'USD',
+      unit: 'fixed_per_month',
+      unit_name: null,
+      amount: '10',
+      tier: 'standard',
+      billing_period: 'month',
+      includes: '',
+      ...over,
+    },
+    verification,
+  );
+}
+
 export const FAKE_DECISION_TYPE: DecisionTypeDef = {
   id: 'vector-store',
   title: 'Vector store (fake)',

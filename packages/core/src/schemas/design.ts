@@ -28,11 +28,18 @@ export interface DesignLimits {
   maxNoteChars: number;
 }
 
+/**
+ * Traits (spec 5.4). The first four are the specification's. `holdsConversation` and `contextPolicy` are not: rule R-03
+ * ("a conversation or memory store has no truncation or summary policy", spec 7.2) has no field to read, so they are
+ * added as optional user declarations (conflict C-019). Optional fields left out never reach a hash.
+ */
 const traitsSchema = z.strictObject({
   onRequestPath: z.boolean().optional(),
   longRunning: z.boolean().optional(),
   readRatio: z.number().min(0).max(1).optional(),
   hasFailover: z.boolean().optional(),
+  holdsConversation: z.boolean().optional(),
+  contextPolicy: z.enum(['none', 'window', 'summary']).optional(),
 });
 
 /** Component (spec 5.4). `position` is layout only: excluded from every rule and every hash (I5). */

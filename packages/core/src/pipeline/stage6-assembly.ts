@@ -13,7 +13,7 @@ import {
   type Verdict,
 } from '../schemas/verdict';
 import { RULES_VERSION } from '../versions';
-import { isFreeTier, splitByFreshness, stateOf, type FreshnessContext, type OptionData } from './records';
+import { isFreeTier, splitByFreshness, stateOf, type FreshnessContext, type OptionData } from '../kb-records';
 import type { Closeness } from './stage5-closeness';
 import type { EliminatedOption } from './stage3-elimination';
 import type { ScoredOption } from './stage4-scoring';

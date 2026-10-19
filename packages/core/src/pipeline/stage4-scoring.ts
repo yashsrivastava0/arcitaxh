@@ -8,7 +8,7 @@ import {
   type DimensionScore,
   type OptionScore,
 } from '../schemas/verdict';
-import { isFreeTier, isRateLimit, splitByFreshness, stateOf, type FreshnessContext } from './records';
+import { isFreeTier, isRateLimit, splitByFreshness, stateOf, type FreshnessContext } from '../kb-records';
 import type { Survivor } from './stage3-elimination';
 
 /** One dimension before weights: a value, whether it could be scored, and whether data was missing or stale. */

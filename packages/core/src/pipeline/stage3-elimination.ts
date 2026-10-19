@@ -10,7 +10,7 @@ import {
   splitByFreshness,
   type FreshnessContext,
   type OptionData,
-} from './records';
+} from '../kb-records';
 
 /** An option that survived elimination, with whatever doubt Stage 3 raised about it (P9). */
 export interface Survivor {
