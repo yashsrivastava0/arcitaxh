@@ -72,9 +72,9 @@ Canonical source documents. No frontmatter; read-only.
 
 | Title | Type | Status | Updated | Path |
 |---|---|---|---|---|
+| Phase 0 status and handoff | plan | draft | 2026-10-19 | [05-phases/phase-0/status.md](./05-phases/phase-0/status.md) |
 | Phase 0 conflicts between documents | note | draft | 2026-10-18 | [05-phases/phase-0/conflicts.md](./05-phases/phase-0/conflicts.md) |
 | Phase 0 parking lot | note | draft | 2026-10-18 | [05-phases/phase-0/parking-lot.md](./05-phases/phase-0/parking-lot.md) |
 | Phase 0 plan: foundation and validate the engine | plan | draft | 2026-10-18 | [05-phases/phase-0/plan.md](./05-phases/phase-0/plan.md) |
 | Phase 0 questions for the founder | note | draft | 2026-10-18 | [05-phases/phase-0/questions.md](./05-phases/phase-0/questions.md) |
 | Proposed changes to the specification | note | draft | 2026-10-18 | [05-phases/phase-0/spec-change-proposals.md](./05-phases/phase-0/spec-change-proposals.md) |
-| Phase 0 status and handoff | plan | draft | 2026-10-18 | [05-phases/phase-0/status.md](./05-phases/phase-0/status.md) |
