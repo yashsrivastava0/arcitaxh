@@ -32,14 +32,14 @@ Updated at the end of every session. Read this first when resuming.
 | M2 | Core types, schemas, hashing | done (102 core tests; independent purity review found no violations; enforcement hardened, see ADR-037) |
 | M3 | KB package, loader, bundle, checks, fixtures | done except the four extra decision types, which wait for question 1 (acceptance checked: fixture KB passes; placeholder, missing quote, expired launch record, dangling reference and wrong TTL each fail `kb:check` in tests; fixtures cannot enter a bundle) |
 | M4 | Six-stage pipeline with golden tests | done (acceptance checked: all three outcomes; E-1 to E-6; the deferral option; P9 incl. properties and a mutation check; partial score; byte-identical verdict and hash; per-dimension breakdown stored). See ADR-041 for the interpretations I made |
-| M5 | Rules R-01..R-07 and R-09, graph helpers, calculators | IN PROGRESS; changes committed locally for publishing, CI not run (see Next) |
+| M5 | Rules R-01..R-07 and R-09, graph helpers, calculators | IN PROGRESS; feature commits pushed to `origin/main`, CI not run (see Next) |
 | M6-M11 | | not started |
 
 ## Next
 
 ### Session handoff (M5 in progress; publishing handoff)
 
-State: M0-M4 are committed through `974ad5f`. M5 implementation files are now committed locally in feature-sized changes for publication. The supplied GitHub remote was empty on initial check and is configured as `origin` for the pending push. **M5 has not passed `pnpm run ci`.** The previous handoff recorded three failing rules tests; this publishing task does not include a test run.
+State: M0-M4 are committed through `974ad5f`. M5 implementation files and the requested root planning Markdown are committed and pushed to `origin/main` on 2026-10-19. The root `Decision canvas architecture spec.pdf` was excluded. **M5 has not passed `pnpm run ci`.** The previous handoff recorded three failing rules tests; this publishing task did not include a test run.
 
 M5 implementation components and recorded status:
 
